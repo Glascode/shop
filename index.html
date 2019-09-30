@@ -4,26 +4,77 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="An example e-commerce website">
+  <meta name="description" content="A simple shopping website">
 
-  <title>E-Commerce website</title>
+  <title>Shop</title>
 
   <link rel="icon" type="image/png" href="">
 
   <link rel="stylesheet" type="text/css"
         href="https://rsms.me/inter/inter.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+        rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="css/grid-system.min.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
 <body>
 
-<header class="header">
-
+<header class="grid">
+  <h1 class="col-3">Shop</h1>
+  <nav class="col-3">
+    <i class="material-icons-round">shopping_basket</i>
+  </nav>
 </header>
 
-<main class="content"></main>
-
-<footer class="footer"></footer>
+<main>
+    <section>
+      <h2>Food</h2>
+      <ul class="grid">
+          <li class="box col-2">
+            <img src="images/donut.jpg" alt="Donuts">
+            <h3>Donuts</h3>
+            <p>4.99</p>
+            <input type="button" class="btn btn-primary" value="Add">
+          </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Clothing</h2>
+      <ul class="grid">
+          <li class="box col-2">
+            <img src="images/t-shirt.jpg" alt="T-Shirt">
+            <h3>T-Shirt</h3>
+            <p>11.59</p>
+            <input type="button" class="btn btn-primary" value="Add">
+          </li>
+          <li class="box col-2">
+            <img src="images/jumper.jpg" alt="Jumper">
+            <h3>Jumper</h3>
+            <p>7.59</p>
+            <input type="button" class="btn btn-primary" value="Add">
+          </li>
+          <li class="box col-2">
+            <img src="images/jumper.jpg" alt="Jumper">
+            <h3>Jumper</h3>
+            <p>7.59</p>
+            <input type="button" class="btn btn-primary" value="Add">
+          </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Home</h2>
+      <ul class="grid">
+          <li class="box col-2">
+            <img src="images/http:&#x2F;&#x2F;placehold.it&#x2F;240x240&amp;text&#x3D;Cushion" alt="Cushion">
+            <h3>Cushion</h3>
+            <p>14.99</p>
+            <input type="button" class="btn btn-primary" value="Add">
+          </li>
+      </ul>
+    </section>
+</main>
 
 </body>
 

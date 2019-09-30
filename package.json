@@ -1,0 +1,10 @@
+{
+  "name": "shop",
+  "version": "1.0.0",
+  "dependencies": {
+    "mustache": "^3.1.0"
+  },
+  "scripts": {
+    "build": "mustache data/shop.json index.mustache > index.html"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "categories": [
+    {
+      "name": "Food",
+      "products": [
+        {
+          "name": "Donuts",
+          "img": "donut.jpg",
+          "price": 4.99,
+          "options": [
+            {
+              "name": "taste",
+              "attributes": [
+                "Chocolate",
+                "Strawberry"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Clothing",
+      "products": [
+        {
+          "name": "T-Shirt",
+          "img": "t-shirt.jpg",
+          "price": 11.59,
+          "options": [
+            {
+              "name": "Size",
+              "attributes": [
+                "S",
+                "M",
+                "L"
+              ]
+            },
+            {
+              "name": "color",
+              "attributes": [
+                "Red",
+                "Pink",
+                "Green"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Jumper",
+          "img": "jumper.jpg",
+          "price": 7.59,
+          "options": [
+            {
+              "name": "Size",
+              "attributes": [
+                "10",
+                "11",
+                "12"
+              ]
+            },
+            {
+              "name": "color",
+              "attributes": [
+                "White",
+                "Black",
+                "Grey"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Jumper",
+          "img": "jumper.jpg",
+          "price": 7.59,
+          "options": [
+            {
+              "name": "Size",
+              "attributes": [
+                "10",
+                "11",
+                "12"
+              ]
+            },
+            {
+              "name": "color",
+              "attributes": [
+                "White",
+                "Black",
+                "Grey"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Home",
+      "products": [
+        {
+          "name": "Cushion",
+          "img": "http://placehold.it/240x240&text=Cushion",
+          "price": 14.99
+        }
+      ]
+    }
+  ]
+}

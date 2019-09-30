@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="A simple shopping website">
+
+  <title>Shop</title>
+
+  <link rel="icon" type="image/png" href="">
+
+  <link rel="stylesheet" type="text/css"
+        href="https://rsms.me/inter/inter.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+        rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="css/grid-system.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+
+<header class="grid">
+  <h1 class="col-3">Shop</h1>
+  <nav class="col-3">
+    <i class="material-icons-round">shopping_basket</i>
+  </nav>
+</header>
+
+<main>
+  {{#categories}}
+    <section>
+      <h2>{{name}}</h2>
+      <ul class="grid">
+        {{#products}}
+          <li class="box col-2">
+            <img src="images/{{img}}" alt="{{name}}">
+            <h3>{{name}}</h3>
+            <p>{{price}}</p>
+            <input type="button" class="btn btn-primary" value="Add">
+          </li>
+        {{/products}}
+      </ul>
+    </section>
+  {{/categories}}
+</main>
+
+</body>
+
+</html>
