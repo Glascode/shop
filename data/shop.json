@@ -69,8 +69,8 @@
           ]
         },
         {
-          "name": "Jumper",
-          "img": "jumper.jpg",
+          "name": "Shoes",
+          "img": "shoes.jpg",
           "price": 7.59,
           "options": [
             {
@@ -97,8 +97,13 @@
       "name": "Home",
       "products": [
         {
-          "name": "Cushion",
-          "img": "http://placehold.it/240x240&text=Cushion",
+          "name": "Chair",
+          "img": "chair.jpg",
+          "price": 14.99
+        },
+        {
+          "name": "Lamp",
+          "img": "lamp.jpg",
           "price": 14.99
         }
       ]
