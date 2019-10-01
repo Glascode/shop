@@ -15,8 +15,8 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
         rel="stylesheet">
 
-  <link rel="stylesheet" type="text/css" href="css/grid-system.min.css">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/grid-system.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/css/main.css">
 </head>
 
 <body>
@@ -35,7 +35,7 @@
       <ul class="grid">
         {{#products}}
           <li class="col-2">
-            <img src="images/{{img}}" alt="{{name}}">
+            <img class="product-image" src="images/{{img}}" alt="{{name}}">
             <h3>{{name}}</h3>
             <p>{{price}}</p>
             <input type="button" class="btn btn-primary" value="Ajouter">

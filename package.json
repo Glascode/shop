@@ -2,13 +2,12 @@
   "name": "shop",
   "version": "1.0.0",
   "dependencies": {
-    "mustache": "^3.1.0"
-  },
-  "watch": {
-    "build": "./*.mustache"
+    "mustache": "^3.1.0",
+    "watch": "^1.0.2"
   },
   "scripts": {
-    "build": "mustache data/shop.json index.mustache > index.html",
-    "watch": "npm-watch build"
+    "build:sass": "sass src/scss/main.scss:dist/css/main.css",
+    "build:mustache": "mustache data/shop.json src/index.mustache > dist/index.html",
+    "watch": "watch 'npm run build:mustache' src/"
   }
 }
