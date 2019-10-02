@@ -7,7 +7,7 @@
         {
           "id": "donuts",
           "name": "Donuts",
-          "img": "donut.jpg",
+          "img": "donuts.jpg",
           "price": 4.99,
           "options": [
             {
