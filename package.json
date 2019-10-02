@@ -8,6 +8,7 @@
   "scripts": {
     "build:sass": "sass src/scss/main.scss:dist/css/main.css",
     "build:mustache": "mustache data/shop.json src/index.mustache > dist/index.html",
+    "build": "npm run build:sass && npm run build:mustache",
     "watch": "watch 'npm run build:mustache' src/"
   }
 }

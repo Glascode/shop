@@ -1,18 +1,27 @@
 {
   "categories": [
     {
+      "id": "food",
       "name": "Food",
       "products": [
         {
+          "id": "donuts",
           "name": "Donuts",
           "img": "donut.jpg",
           "price": 4.99,
           "options": [
             {
-              "name": "taste",
+              "id": "donutsTaste",
+              "name": "Taste",
               "attributes": [
-                "Chocolate",
-                "Strawberry"
+                {
+                  "id": "donutsTaste1",
+                  "name": "Chocolate"
+                },
+                {
+                  "id": "donutsTaste2",
+                  "name": "Strawberry"
+                }
               ]
             }
           ]
@@ -23,70 +32,133 @@
       "name": "Clothing",
       "products": [
         {
+          "id": "tshirt",
           "name": "T-Shirt",
           "img": "t-shirt.jpg",
-          "price": 11.59,
+          "price": 14.49,
           "options": [
             {
+              "id": "tshirtSize",
               "name": "Size",
               "attributes": [
-                "S",
-                "M",
-                "L"
+                {
+                  "id": "tshirtSize1",
+                  "name": "S"
+                },
+                {
+                  "id": "tshirtSize2",
+                  "name": "M"
+                },
+                {
+                  "id": "tshirtSize3",
+                  "name": "L"
+                }
               ]
             },
             {
-              "name": "color",
+              "id": "tshirtColour",
+              "name": "Colour",
               "attributes": [
-                "Red",
-                "Pink",
-                "Green"
+                {
+                  "id": "tshirtColour1",
+                  "name": "Black"
+                },
+                {
+                  "id": "tshirtColour2",
+                  "name": "Green"
+                },
+                {
+                  "id": "tshirtColour3",
+                  "name": "Blue"
+                }
               ]
             }
           ]
         },
         {
+          "id": "jumper",
           "name": "Jumper",
           "img": "jumper.jpg",
-          "price": 7.59,
+          "price": 24.49,
           "options": [
             {
+              "id": "jumperSize",
               "name": "Size",
               "attributes": [
-                "10",
-                "11",
-                "12"
+                {
+                  "id": "jumperSize1",
+                  "name": "S"
+                },
+                {
+                  "id": "jumperSize2",
+                  "name": "M"
+                },
+                {
+                  "id": "jumperSize3",
+                  "name": "L"
+                }
               ]
             },
             {
-              "name": "color",
+              "id": "jumperColour",
+              "name": "Colour",
               "attributes": [
-                "White",
-                "Black",
-                "Grey"
+                {
+                  "id": "jumperColour1",
+                  "name": "Black"
+                },
+                {
+                  "id": "jumperColour2",
+                  "name": "Grey"
+                },
+                {
+                  "id": "jumperColour3",
+                  "name": "White"
+                }
               ]
             }
           ]
         },
         {
+          "id": "shoes",
           "name": "Shoes",
           "img": "shoes.jpg",
-          "price": 7.59,
+          "price": 39.49,
           "options": [
             {
+              "id": "shoesSize",
               "name": "Size",
               "attributes": [
-                "10",
-                "11",
-                "12"
+                {
+                  "id": "shoesSize1",
+                  "name": "10"
+                },
+                {
+                  "id": "shoesSize2",
+                  "name": "11"
+                },
+                {
+                  "id": "shoesSize3",
+                  "name": "12"
+                }
               ]
             },
             {
-              "name": "color",
+              "id": "shoesColour",
+              "name": "Colour",
               "attributes": [
-                "White",
-                "Black",
-                "Grey"
+                {
+                  "id": "shoesColour1",
+                  "name": "Black"
+                },
+                {
+                  "id": "shoesColour2",
+                  "name": "White"
+                },
+                {
+                  "id": "shoesColour3",
+                  "name": "Green"
+                }
               ]
             }
           ]
@@ -94,17 +166,20 @@
       ]
     },
     {
+      "id": "home",
       "name": "Home",
       "products": [
         {
+          "id": "chair",
           "name": "Chair",
           "img": "chair.jpg",
-          "price": 14.99
+          "price": 34.49
         },
         {
+          "id": "lamp",
           "name": "Lamp",
           "img": "lamp.jpg",
-          "price": 14.99
+          "price": 14.49
         }
       ]
     }
