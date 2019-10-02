@@ -1,0 +1,11 @@
+body {
+  font-family: Inter, sans-serif;
+}
+
+.product-image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.25rem;
+}
+
+/*# sourceMappingURL=main.css.map */

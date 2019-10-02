@@ -1,0 +1,35 @@
+---
+layout: default
+title: Index
+---
+
+{% for category in site.data.shop.categories %}
+<section>
+  <h2>{{ category.name }}</h2>
+
+  <ul class="grid list-unstyled">
+    {% for product in category.products %}
+    <li class="col2">
+      <img class="product-image" src="images/{{ product.img }}"
+           alt="{{ product.name }}">
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.price }}</p>
+
+      {% for option in product.options %}
+      <fieldset>
+        <legend>{{ option.name }}</legend>
+        {% for attribute in option.attributes %}
+        <input class="form-check-input" type="radio"
+               name="{{ option.id }}" id="{{ attribute.id }}"
+               value="{{ attribute.name }}">
+        <label class="form-check-label"
+               for="{{ attribute.id }}">{{ attribute.name }}</label><br>
+        {% endfor %}
+      </fieldset>
+      {% endfor %}
+      <input type="button" class="btn btn-primary" value="Ajouter">
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}
