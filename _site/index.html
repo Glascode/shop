@@ -21,10 +21,33 @@
 
 
 <body>
-<header class="flex items-center justify-between">
-  <h1 class="col-3">Shop</h1>
-  <nav class="col-3">
-    <i class="material-icons-round">shopping_basket</i>
+<header class="grid columns-6">
+  <h1 class="c-3">Shop</h1>
+  <nav class="c-3">
+    <div class="cart">
+      <i class="material-icons-round cart-icon">shopping_basket</i> Cart
+      <ul class="cart-list">
+        
+        <li class="cart-item grid columns-6">
+          
+          
+          <img class="cart-item-image c-1 r-2" src="images/t-shirt.jpg"
+               alt="T-Shirt">
+          <h4 class="cart-item-name c-2-e">T-Shirt</h4>
+          <p class="cart-item-price">14.49</p>
+        </li>
+        
+        <li class="cart-item grid columns-6">
+          
+          
+          <img class="cart-item-image c-1 r-2" src="images/donuts.jpg"
+               alt="Donuts">
+          <h4 class="cart-item-name c-2-e">Donuts</h4>
+          <p class="cart-item-price">4.99</p>
+        </li>
+        
+      </ul>
+    </div>
   </nav>
 </header>
 
@@ -34,9 +57,9 @@
 <section class="category-section">
   <h2>Food</h2>
 
-  <section class="grid gap-5 gap-m-4 gap-l-5 list-unstyled">
+  <section class="products grid columns-6">
     
-    <article class="col-6 col-s-3 col-m-2">
+    <article class="c-2 c-m-3">
       <img class="product-image" src="images/donuts.jpg"
            alt="Donuts">
       <h3 class="product-name">Donuts</h3>
@@ -47,24 +70,24 @@
         <input type="hidden" name="category" value="1">
         <input type="hidden" name="product" value="1">
         
-        <fieldset class="mb-3">
+        <fieldset class="product-option">
           <legend>Taste</legend>
           
           
           <input class="taste" type="radio"
                  name="o1" value="a1"
                  id="c1p1o1a1" required>
-          <label class="mr-2" for="c1p1o1a1">Chocolate</label>
+          <label for="c1p1o1a1">Chocolate</label>
           
           
           <input class="taste" type="radio"
                  name="o1" value="a2"
                  id="c1p1o1a2" required>
-          <label class="mr-2" for="c1p1o1a2">Strawberry</label>
+          <label for="c1p1o1a2">Strawberry</label>
           
         </fieldset>
         
-        <input type="submit" class="btn btn-primary" value="Ajouter">
+        <input type="submit" class="btn btn-primary" value="Add">
       </form>
     </article>
     
@@ -74,9 +97,9 @@
 <section class="category-section">
   <h2>Clothing</h2>
 
-  <section class="grid gap-5 gap-m-4 gap-l-5 list-unstyled">
+  <section class="products grid columns-6">
     
-    <article class="col-6 col-s-3 col-m-2">
+    <article class="c-2 c-m-3">
       <img class="product-image" src="images/t-shirt.jpg"
            alt="T-Shirt">
       <h3 class="product-name">T-Shirt</h3>
@@ -87,57 +110,57 @@
         <input type="hidden" name="category" value="2">
         <input type="hidden" name="product" value="1">
         
-        <fieldset class="mb-3">
+        <fieldset class="product-option">
           <legend>Size</legend>
           
           
           <input class="size" type="radio"
                  name="o1" value="a1"
                  id="c2p1o1a1" required>
-          <label class="mr-2" for="c2p1o1a1">S</label>
+          <label for="c2p1o1a1">S</label>
           
           
           <input class="size" type="radio"
                  name="o1" value="a2"
                  id="c2p1o1a2" required>
-          <label class="mr-2" for="c2p1o1a2">M</label>
+          <label for="c2p1o1a2">M</label>
           
           
           <input class="size" type="radio"
                  name="o1" value="a3"
                  id="c2p1o1a3" required>
-          <label class="mr-2" for="c2p1o1a3">L</label>
+          <label for="c2p1o1a3">L</label>
           
         </fieldset>
         
-        <fieldset class="mb-3">
+        <fieldset class="product-option">
           <legend>Colour</legend>
           
           
           <input class="colour" type="radio"
                  name="o2" value="a1"
                  id="c2p1o2a1" required>
-          <label class="mr-2" for="c2p1o2a1">Black</label>
+          <label for="c2p1o2a1">Black</label>
           
           
           <input class="colour" type="radio"
                  name="o2" value="a2"
                  id="c2p1o2a2" required>
-          <label class="mr-2" for="c2p1o2a2">Green</label>
+          <label for="c2p1o2a2">Green</label>
           
           
           <input class="colour" type="radio"
                  name="o2" value="a3"
                  id="c2p1o2a3" required>
-          <label class="mr-2" for="c2p1o2a3">Blue</label>
+          <label for="c2p1o2a3">Blue</label>
           
         </fieldset>
         
-        <input type="submit" class="btn btn-primary" value="Ajouter">
+        <input type="submit" class="btn btn-primary" value="Add">
       </form>
     </article>
     
-    <article class="col-6 col-s-3 col-m-2">
+    <article class="c-2 c-m-3">
       <img class="product-image" src="images/jumper.jpg"
            alt="Jumper">
       <h3 class="product-name">Jumper</h3>
@@ -148,57 +171,57 @@
         <input type="hidden" name="category" value="2">
         <input type="hidden" name="product" value="2">
         
-        <fieldset class="mb-3">
+        <fieldset class="product-option">
           <legend>Size</legend>
           
           
           <input class="size" type="radio"
                  name="o1" value="a1"
                  id="c2p2o1a1" required>
-          <label class="mr-2" for="c2p2o1a1">S</label>
+          <label for="c2p2o1a1">S</label>
           
           
           <input class="size" type="radio"
                  name="o1" value="a2"
                  id="c2p2o1a2" required>
-          <label class="mr-2" for="c2p2o1a2">M</label>
+          <label for="c2p2o1a2">M</label>
           
           
           <input class="size" type="radio"
                  name="o1" value="a3"
                  id="c2p2o1a3" required>
-          <label class="mr-2" for="c2p2o1a3">L</label>
+          <label for="c2p2o1a3">L</label>
           
         </fieldset>
         
-        <fieldset class="mb-3">
+        <fieldset class="product-option">
           <legend>Colour</legend>
           
           
           <input class="colour" type="radio"
                  name="o2" value="a1"
                  id="c2p2o2a1" required>
-          <label class="mr-2" for="c2p2o2a1">Black</label>
+          <label for="c2p2o2a1">Black</label>
           
           
           <input class="colour" type="radio"
                  name="o2" value="a2"
                  id="c2p2o2a2" required>
-          <label class="mr-2" for="c2p2o2a2">Grey</label>
+          <label for="c2p2o2a2">Grey</label>
           
           
           <input class="colour" type="radio"
                  name="o2" value="a3"
                  id="c2p2o2a3" required>
-          <label class="mr-2" for="c2p2o2a3">White</label>
+          <label for="c2p2o2a3">White</label>
           
         </fieldset>
         
-        <input type="submit" class="btn btn-primary" value="Ajouter">
+        <input type="submit" class="btn btn-primary" value="Add">
       </form>
     </article>
     
-    <article class="col-6 col-s-3 col-m-2">
+    <article class="c-2 c-m-3">
       <img class="product-image" src="images/shoes.jpg"
            alt="Shoes">
       <h3 class="product-name">Shoes</h3>
@@ -209,53 +232,53 @@
         <input type="hidden" name="category" value="2">
         <input type="hidden" name="product" value="3">
         
-        <fieldset class="mb-3">
+        <fieldset class="product-option">
           <legend>Size</legend>
           
           
           <input class="size" type="radio"
                  name="o1" value="a1"
                  id="c2p3o1a1" required>
-          <label class="mr-2" for="c2p3o1a1">10</label>
+          <label for="c2p3o1a1">10</label>
           
           
           <input class="size" type="radio"
                  name="o1" value="a2"
                  id="c2p3o1a2" required>
-          <label class="mr-2" for="c2p3o1a2">11</label>
+          <label for="c2p3o1a2">11</label>
           
           
           <input class="size" type="radio"
                  name="o1" value="a3"
                  id="c2p3o1a3" required>
-          <label class="mr-2" for="c2p3o1a3">12</label>
+          <label for="c2p3o1a3">12</label>
           
         </fieldset>
         
-        <fieldset class="mb-3">
+        <fieldset class="product-option">
           <legend>Colour</legend>
           
           
           <input class="colour" type="radio"
                  name="o2" value="a1"
                  id="c2p3o2a1" required>
-          <label class="mr-2" for="c2p3o2a1">Black</label>
+          <label for="c2p3o2a1">Black</label>
           
           
           <input class="colour" type="radio"
                  name="o2" value="a2"
                  id="c2p3o2a2" required>
-          <label class="mr-2" for="c2p3o2a2">White</label>
+          <label for="c2p3o2a2">White</label>
           
           
           <input class="colour" type="radio"
                  name="o2" value="a3"
                  id="c2p3o2a3" required>
-          <label class="mr-2" for="c2p3o2a3">Green</label>
+          <label for="c2p3o2a3">Green</label>
           
         </fieldset>
         
-        <input type="submit" class="btn btn-primary" value="Ajouter">
+        <input type="submit" class="btn btn-primary" value="Add">
       </form>
     </article>
     
@@ -265,9 +288,9 @@
 <section class="category-section">
   <h2>Home</h2>
 
-  <section class="grid gap-5 gap-m-4 gap-l-5 list-unstyled">
+  <section class="products grid columns-6">
     
-    <article class="col-6 col-s-3 col-m-2">
+    <article class="c-2 c-m-3">
       <img class="product-image" src="images/chair.jpg"
            alt="Chair">
       <h3 class="product-name">Chair</h3>
@@ -278,11 +301,11 @@
         <input type="hidden" name="category" value="3">
         <input type="hidden" name="product" value="1">
         
-        <input type="submit" class="btn btn-primary" value="Ajouter">
+        <input type="submit" class="btn btn-primary" value="Add">
       </form>
     </article>
     
-    <article class="col-6 col-s-3 col-m-2">
+    <article class="c-2 c-m-3">
       <img class="product-image" src="images/lamp.jpg"
            alt="Lamp">
       <h3 class="product-name">Lamp</h3>
@@ -293,7 +316,7 @@
         <input type="hidden" name="category" value="3">
         <input type="hidden" name="product" value="2">
         
-        <input type="submit" class="btn btn-primary" value="Ajouter">
+        <input type="submit" class="btn btn-primary" value="Add">
       </form>
     </article>
     

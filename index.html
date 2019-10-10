@@ -7,9 +7,9 @@ title: Index
 <section class="category-section">
   <h2>{{ category.name }}</h2>
 
-  <section class="grid gap-5 gap-m-4 gap-l-5 list-unstyled">
+  <section class="products grid columns-6">
     {% for product in category.products %}
-    <article class="col-6 col-s-3 col-m-2">
+    <article class="c-2 c-m-3">
       <img class="product-image" src="images/{{ product.img }}"
            alt="{{ product.name }}">
       <h3 class="product-name">{{ product.name }}</h3>
@@ -20,18 +20,18 @@ title: Index
         <input type="hidden" name="category" value="{{ category.id }}">
         <input type="hidden" name="product" value="{{ product.id }}">
         {% for option in product.options %}
-        <fieldset class="mb-3">
+        <fieldset class="product-option">
           <legend>{{ option.name }}</legend>
           {% for attribute in option.attributes %}
           {% capture input_id %}c{{ category.id }}p{{ product.id }}o{{ option.id }}a{{ attribute.id }}{% endcapture %}
           <input class="{{ option.name | downcase }}" type="radio"
                  name="o{{ option.id }}" value="a{{ attribute.id }}"
                  id="{{ input_id }}" required>
-          <label class="mr-2" for="{{ input_id }}">{{ attribute.name }}</label>
+          <label for="{{ input_id }}">{{ attribute.name }}</label>
           {% endfor %}
         </fieldset>
         {% endfor %}
-        <input type="submit" class="btn btn-primary" value="Ajouter">
+        <input type="submit" class="btn btn-primary" value="Add">
       </form>
     </article>
     {% endfor %}

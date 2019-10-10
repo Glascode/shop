@@ -14,11 +14,13 @@ $red: #ff3b30 !default;
 $teal: #5ac8fa !default;
 $yellow: #ffcc00 !default;
 
+$accent: $green;
+
 
 // Resets
 
 html {
-  font-size: 15px;
+  font-size: 16px;
 }
 
 body {
@@ -29,21 +31,59 @@ body {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: .5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #111;
 }
 
 h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 3.3rem;
+  letter-spacing: -.045em;
+  font-weight: 700;
 }
 
 h2 {
+  font-size: 2.5rem;
+  letter-spacing: -.035em;
+}
+
+h3 {
   font-size: 2rem;
-  margin-bottom: 1rem;
+  letter-spacing: -.03em;
+}
+
+h4 {
+  font-size: 1.75rem;
+  letter-spacing: -.02em;
+}
+
+h5 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+}
+
+a {
+  color: $accent;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline $accent;
+  }
+}
+
+img {
+  width: 100%;
 }
 
 fieldset {

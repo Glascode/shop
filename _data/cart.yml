@@ -1,0 +1,15 @@
+items:
+  - category_id: 2
+    product_id: 1
+    options:
+      - id: 1
+        attribute_id: 2
+      - id: 2
+        attribute_id: 1
+    quantitiy: 3
+  - category_id: 1
+    product_id: 1
+    options:
+      - id: 1
+        attribute_id: 2
+    quantity: 1

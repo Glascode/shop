@@ -1,6 +1,20 @@
-<header class="flex items-center justify-between">
-  <h1 class="col-3">Shop</h1>
-  <nav class="col-3">
-    <i class="material-icons-round">shopping_basket</i>
+<header class="grid columns-6">
+  <h1 class="c-3">Shop</h1>
+  <nav class="c-3">
+    <div class="cart">
+      <i class="material-icons-round cart-icon">shopping_basket</i> Cart
+      <ul class="cart-list">
+        {% for item in site.data.cart.items %}
+        <li class="cart-item grid columns-6">
+          {% assign category = site.data.shop.categories | where: "id", item.category_id | first %}
+          {% assign product = category.products | where: "id", item.product_id | first %}
+          <img class="cart-item-image c-1 r-2" src="images/{{ product.img }}"
+               alt="{{ product.name }}">
+          <h4 class="cart-item-name c-2-e">{{ product.name }}</h4>
+          <p class="cart-item-price">{{ product.price }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
   </nav>
 </header>
