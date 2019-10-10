@@ -1,0 +1,30 @@
+// Components
+
+// Buttons
+
+.btn {
+  display: inline-block;
+  padding: .25rem .7rem;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  color: #212529;
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .2rem;
+  transition: color .1s, background-color .1s ease-in-out, border-color .1s ease-in-out, box-shadow .1s ease-in-out;
+  user-select: none;
+}
+
+.btn-primary {
+  color: $white;
+  background-color: $black;
+  border-color: $black;
+
+  &:hover {
+    background-color: lighten($black, 15%);
+    border-color: lighten($black, 15%);
+  }
+}

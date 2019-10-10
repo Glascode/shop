@@ -4,32 +4,37 @@ title: Index
 ---
 
 {% for category in site.data.shop.categories %}
-<section>
+<section class="category-section">
   <h2>{{ category.name }}</h2>
 
-  <ul class="grid list-unstyled">
+  <section class="grid gap-5 gap-m-4 gap-l-5 list-unstyled">
     {% for product in category.products %}
-    <li class="col2">
+    <article class="col-6 col-s-3 col-m-2">
       <img class="product-image" src="images/{{ product.img }}"
            alt="{{ product.name }}">
-      <h3>{{ product.name }}</h3>
-      <p>{{ product.price }}</p>
+      <h3 class="product-name">{{ product.name }}</h3>
+      <p class="product-price">{{ product.price }}</p>
 
-      {% for option in product.options %}
-      <fieldset>
-        <legend>{{ option.name }}</legend>
-        {% for attribute in option.attributes %}
-        <input class="form-check-input" type="radio"
-               name="{{ option.id }}" id="{{ attribute.id }}"
-               value="{{ attribute.name }}">
-        <label class="form-check-label"
-               for="{{ attribute.id }}">{{ attribute.name }}</label><br>
+      <form>
+        <input type="hidden" name="action" value="addToCart">
+        <input type="hidden" name="category" value="{{ category.id }}">
+        <input type="hidden" name="product" value="{{ product.id }}">
+        {% for option in product.options %}
+        <fieldset class="mb-3">
+          <legend>{{ option.name }}</legend>
+          {% for attribute in option.attributes %}
+          {% capture input_id %}c{{ category.id }}p{{ product.id }}o{{ option.id }}a{{ attribute.id }}{% endcapture %}
+          <input class="{{ option.name | downcase }}" type="radio"
+                 name="o{{ option.id }}" value="a{{ attribute.id }}"
+                 id="{{ input_id }}" required>
+          <label class="mr-2" for="{{ input_id }}">{{ attribute.name }}</label>
+          {% endfor %}
+        </fieldset>
         {% endfor %}
-      </fieldset>
-      {% endfor %}
-      <input type="button" class="btn btn-primary" value="Ajouter">
-    </li>
+        <input type="submit" class="btn btn-primary" value="Ajouter">
+      </form>
+    </article>
     {% endfor %}
-  </ul>
+  </section>
 </section>
 {% endfor %}

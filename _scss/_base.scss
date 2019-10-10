@@ -1,0 +1,68 @@
+// Base
+
+// Variables
+
+$white: #fff !default;
+$black: #000 !default;
+
+$blue: #007aff !default;
+$green: #28cd41 !default;
+$orange: #ff9500 !default;
+$pink: #ff2d55 !default;
+$purple: #af52de !default;
+$red: #ff3b30 !default;
+$teal: #5ac8fa !default;
+$yellow: #ffcc00 !default;
+
+
+// Resets
+
+html {
+  font-size: 15px;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: .5rem;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+fieldset {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+legend {
+  padding: 0;
+  margin-bottom: .5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: inherit;
+  color: inherit;
+  white-space: normal;
+}
+
+[type=button]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+  cursor: pointer;
+}
