@@ -170,11 +170,73 @@ function storeItem(item) {
   let cart = localStorage.getItem('cart');
   cart = cart ? JSON.parse(cart) : [];
   cart.push(item);
-  localStorage.setItem('cart', JSON.stringify(cart));
-  console.log('cart: ', localStorage.getItem('cart'));
+  // localStorage.setItem('cart', JSON.stringify(cart)); // TODO: let this
+  // activated
 }
 
 console.log(localStorage);
+
+
+/**
+ * Updates the whole cart with the current localStorage values.
+ * This method allows to show only effectively stored items in the cart.
+ */
+function updateCart() {
+  let cart = localStorage.getItem('cart');
+  cart = cart ? JSON.parse(cart) : [];
+
+  const cartList = document.querySelector('.cart-list');
+  cartList.innerHTML = ''; // empty cart-list
+
+  // Add items to cart-list
+  if (cart === undefined || cart.length === 0) {
+    const p = document.createElement('p');
+    p.textContent = 'Your cart is empty. Start by adding some items.';
+    cartList.append(p);
+  } else {
+    cart.forEach(item => {
+      // Create DOM elements with their classes
+      const cartItem = document.createElement('div');
+      cartItem.classList.add('cart-item');
+      const cartItemImage = document.createElement('img');
+      cartItemImage.classList.add('cart-item__image');
+      const cartItemInfo = document.createElement('div');
+      cartItemInfo.classList.add('cart-item__info');
+      const cartItemInfoHeader = document.createElement('div');
+      cartItemInfoHeader.classList.add('cart-item__info_header');
+      const cartItemInfoOptions = document.createElement('div');
+      cartItemInfoOptions.classList.add('cart-item__info_options');
+
+      // Retrieve the category corresponding to the item.categoryID
+      let category = Object.values(data.categories).find(element => {
+        return element.categoryID === item.categoryID;
+      });
+
+      // Retrieve the product with corresponding to the item.productID
+      let product = Object.values(category.products).find(element => {
+        return element.productID === item.productID;
+      });
+
+      // Image
+      cartItemImage.src = product.imgUri;
+      cartItemImage.alt = product.productName;
+
+      // Info header
+      let title = document.createElement('h4');
+      title.textContent = product.productName;
+      let price = document.createElement('p');
+      title.textContent = product.price;
+      cartItemInfoHeader.append(title, price);
+
+      // Info options
+
+
+      cartItem.append(cartItemImage, cartItemInfo);
+
+      cartList.append(cartItem);
+    });
+  }
+}
 
 /**
  * Processes a form.
@@ -200,6 +262,7 @@ function processForm(form) {
 
     /* Store item */
     storeItem(item);
+    updateCart();
   } else if (action === 'remove') {
 
   }

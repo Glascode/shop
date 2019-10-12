@@ -5,6 +5,7 @@ html {
 body {
   margin: 0;
   font-family: Inter, Helvetica Neue, Helvetica, sans-serif;
+  line-height: 1.5;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -139,10 +140,12 @@ footer {
   padding: 0.8rem;
   background-color: #fff;
   border: 1px solid #000;
-  list-style: none;
 }
 .cart-list.show {
   display: block;
+}
+.cart-list > p {
+  margin-bottom: 0;
 }
 
 .cart-item {

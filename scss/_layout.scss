@@ -62,10 +62,13 @@ footer {
   padding: .8rem;
   background-color: #fff;
   border: 1px solid #000;
-  list-style: none;
 
   &.show {
     display: block;
+  }
+
+  > p {
+    margin-bottom: 0;
   }
 }
 
