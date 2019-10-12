@@ -170,8 +170,7 @@ function storeItem(item) {
   let cart = localStorage.getItem('cart');
   cart = cart ? JSON.parse(cart) : [];
   cart.push(item);
-  // localStorage.setItem('cart', JSON.stringify(cart)); // TODO: let this
-  // activated
+  localStorage.setItem('cart', JSON.stringify(cart));
 }
 
 console.log(localStorage);
@@ -204,8 +203,6 @@ function updateCart() {
       cartItemInfo.classList.add('cart-item__info');
       const cartItemInfoHeader = document.createElement('div');
       cartItemInfoHeader.classList.add('cart-item__info_header');
-      const cartItemInfoOptions = document.createElement('div');
-      cartItemInfoOptions.classList.add('cart-item__info_options');
 
       // Retrieve the category corresponding to the item.categoryID
       let category = Object.values(data.categories).find(element => {
@@ -222,17 +219,33 @@ function updateCart() {
       cartItemImage.alt = product.productName;
 
       // Info header
-      let title = document.createElement('h4');
-      title.textContent = product.productName;
-      let price = document.createElement('p');
-      title.textContent = product.price;
-      cartItemInfoHeader.append(title, price);
+      let titleElement = document.createElement('h4');
+      titleElement.textContent = product.productName;
+      let priceElement = document.createElement('p');
+      priceElement.textContent = product.price;
+      cartItemInfoHeader.append(titleElement, priceElement);
+
+      cartItemInfo.append(cartItemInfoHeader);
 
       // Info options
+      if (product.options) {
+        const cartItemInfoOptions = document.createElement('div');
+        cartItemInfoOptions.classList.add('cart-item__info_options');
 
+        for (let option of Object.values(product.options)) {
+          let attributeID = Object.keys(option.attributes).find(key => {
+            return key === item[option.optionID];
+          });
+
+          let optionElement = document.createElement('p');
+          optionElement.textContent = `${option.optionName}: ${option.attributes[attributeID]}`;
+          cartItemInfoOptions.append(optionElement);
+        }
+
+        cartItemInfo.append(cartItemInfoOptions);
+      }
 
       cartItem.append(cartItemImage, cartItemInfo);
-
       cartList.append(cartItem);
     });
   }
@@ -250,7 +263,10 @@ function processForm(form) {
     /* Get elements */
     const categoryID = form.querySelector('input[name="categoryID"]').value;
     const productID = form.querySelector('input[name="productID"]').value;
-    const options = form.querySelectorAll('input[name^="O-"]');
+    let options = [];
+    for (let fieldset of form.querySelectorAll('fieldset')) {
+      options.push(fieldset.querySelector('input[name^="O-"]:checked'));
+    }
 
     /* Create item */
     let item = {};
@@ -277,8 +293,10 @@ document.querySelectorAll('form').forEach(form => {
     if (!valid) {
       e.preventDefault();
     } else {
-      e.preventDefault(); // TODO: debug only
+      e.preventDefault(); // TODO: only for debugging
       processForm(form);
     }
   });
 });
+
+updateCart();
