@@ -2,45 +2,37 @@
 
 // Buttons
 
-.btn {
+button {
   display: inline-block;
   padding: .25rem .7rem;
   font-weight: 400;
   text-align: center;
   vertical-align: middle;
-  color: #212529;
-  background-color: transparent;
-  border: 1px solid transparent;
+  color: #fff;
+  background-color: #000;
+  border: 1px solid #000;
   font-size: 1rem;
   line-height: 1.5;
-  transition: color .1s, background-color .1s ease-in-out, border-color .1s ease-in-out, box-shadow .1s ease-in-out;
   user-select: none;
-}
-
-.btn-primary {
-  color: $white;
-  background-color: $black;
-  border-color: $black;
+  outline: 0;
 
   &:hover {
-    background-color: lighten($black, 15%);
-    border-color: lighten($black, 15%);
+    background-color: lighten(#000, 15%);
+  }
+
+  &:focus,
+  &:active {
+    box-shadow: 0 0 0 2px rgba(#000, .5);
   }
 }
 
 // Form controls
 
-fieldset {
-  margin-bottom: 1.5rem;
-}
-
-legend {
-  margin-bottom: 1rem;
-}
-
-input {
+input[type="radio"] {
   position: absolute;
   opacity: 0;
+  width: 0;
+  height: 0;
   cursor: pointer;
 }
 
@@ -48,10 +40,16 @@ label {
   display: inline-block;
   margin-bottom: .3rem;
   padding: .3rem .5rem;
-  border: 1px solid transparent;
+  border: 1px solid rgba(#000, .2);
   cursor: pointer;
+
+  &:hover {
+    border-color: rgba(#000, .5);
+  }
 }
 
 input:checked + label {
+  color: #fff;
+  background-color: #000;
   border: 1px solid black;
 }

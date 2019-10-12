@@ -64,7 +64,7 @@ img {
 fieldset {
   min-width: 0;
   padding: 0;
-  margin: 0;
+  margin: 0 0 0.5rem;
   border: 0;
 }
 
@@ -164,42 +164,32 @@ footer {
   color: #888;
 }
 
-.btn {
+button {
   display: inline-block;
   padding: 0.25rem 0.7rem;
   font-weight: 400;
   text-align: center;
   vertical-align: middle;
-  color: #212529;
-  background-color: transparent;
-  border: 1px solid transparent;
-  font-size: 1rem;
-  line-height: 1.5;
-  transition: color 0.1s, background-color 0.1s ease-in-out, border-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
-  user-select: none;
-}
-
-.btn-primary {
   color: #fff;
   background-color: #000;
-  border-color: #000;
+  border: 1px solid #000;
+  font-size: 1rem;
+  line-height: 1.5;
+  user-select: none;
+  outline: 0;
 }
-.btn-primary:hover {
+button:hover {
   background-color: #262626;
-  border-color: #262626;
+}
+button:focus, button:active {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
-fieldset {
-  margin-bottom: 1.5rem;
-}
-
-legend {
-  margin-bottom: 1rem;
-}
-
-input {
+input[type=radio] {
   position: absolute;
   opacity: 0;
+  width: 0;
+  height: 0;
   cursor: pointer;
 }
 
@@ -207,11 +197,16 @@ label {
   display: inline-block;
   margin-bottom: 0.3rem;
   padding: 0.3rem 0.5rem;
-  border: 1px solid transparent;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   cursor: pointer;
+}
+label:hover {
+  border-color: rgba(0, 0, 0, 0.5);
 }
 
 input:checked + label {
+  color: #fff;
+  background-color: #000;
   border: 1px solid black;
 }
 

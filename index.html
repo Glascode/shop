@@ -59,7 +59,7 @@
               {{#each attributes as |attributeValue attributeID|}}
               <input class="{{../optionName}}" type="radio"
                      name="{{../optionID}}" value="{{attributeID}}"
-                     id="{{../../../categoryID}}_{{../../productID}}_{{../optionID}}_{{attributeID}}" required>
+                     id="{{../../../categoryID}}_{{../../productID}}_{{../optionID}}_{{attributeID}}">
               <label for="{{../../../categoryID}}_{{../../productID}}_{{../optionID}}_{{attributeID}}">{{attributeValue}}</label>
               {{/each}}
             </fieldset>

@@ -93,3 +93,17 @@ const templateScript = Handlebars.compile(template);
 const html = templateScript(data);
 
 document.body.innerHTML = html;
+
+document.querySelectorAll('form').forEach(form => {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    for (let element of form.elements) {
+      if (element.value === '') {
+        console.log(element);
+        const error = document.createElement('div');
+        error.textContent = 'Please fill-out all fields.';
+        form.append(error);
+      }
+    }
+  });
+});
