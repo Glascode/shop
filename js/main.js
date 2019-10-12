@@ -1,34 +1,38 @@
-{
+'use strict';
+
+const data = {
   "categories": {
     "1": {
-      "categoryName": "food",
+      "categoryName": "Food",
       "categoryID": "C-1",
       "products": {
         "1": {
           "productID": "P-1",
           "productName": "Donuts",
-          "imgUri": "http://placehold.it/240x240&text=Donuts",
-          "price": "4.99",
+          "imgUri": "https://imgur.com/kYchlYz.jpg",
+          "price": "3.99",
           "options": {
-            "optionID": "O-1",
-            "optionName": "Taste",
-            "attributes": {
-              "A-1": "Chocolate",
-              "A-2": "Strawberry"
+            "1": {
+              "optionID": "O-1",
+              "optionName": "Taste",
+              "attributes": {
+                "A-1": "Chocolate",
+                "A-2": "Strawberry"
+              }
             }
           }
         }
       }
     },
     "2": {
-      "categoryName": "clothing",
+      "categoryName": "Clothing",
       "categoryID": "C-2",
       "products": {
         "1": {
           "productID": "P-2",
           "productName": "T-Shirt",
-          "imgUri": "http://placehold.it/240x240&text=T-Shirt",
-          "price": "11.59",
+          "imgUri": "https://imgur.com/bjvRuAP.jpg",
+          "price": "19.99",
           "options": {
             "1": {
               "optionID": "O-1",
@@ -52,13 +56,13 @@
         },
         "2": {
           "productID": "P-3",
-          "productName": "Socks",
-          "imgUri": "http://placehold.it/240x240&text=Socks",
-          "price": "11.59",
+          "productName": "Shoes",
+          "imgUri": "https://imgur.com/oE198Ub.jpg",
+          "price": "49.99",
           "options": {
             "1": {
               "optionID": "O-1",
-              "optionName": "Color",
+              "optionName": "Size",
               "attributes": {
                 "A-1": "44",
                 "A-2": "45",
@@ -75,11 +79,17 @@
       "products": {
         "1": {
           "productID": "P-4",
-          "productName": "Cushion",
-          "imgUri": "http://placehold.it/240x240&text=Cushion",
-          "price": "14.99"
+          "productName": "Chair",
+          "imgUri": "https://imgur.com/yIswGLg.jpg",
+          "price": "24.99"
         }
       }
     }
   }
-}
+};
+
+const template = document.querySelector('#template').innerHTML;
+const templateScript = Handlebars.compile(template);
+const html = templateScript(data);
+
+document.body.innerHTML = html;

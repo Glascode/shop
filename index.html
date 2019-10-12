@@ -1,40 +1,82 @@
----
-layout: default
-title: Index
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="A simple shopping website">
 
-{% for category in site.data.shop.categories %}
-<section class="category-section">
-  <h2>{{ category.name }}</h2>
+  <title>The Shop</title>
 
-  <section class="products grid columns-6">
-    {% for product in category.products %}
-    <article class="c-2 c-m-3">
-      <img class="product-image" src="images/{{ product.img }}"
-           alt="{{ product.name }}">
-      <h3 class="product-name">{{ product.name }}</h3>
-      <p class="product-price">{{ product.price }}</p>
+  <link rel="icon" type="image/png" href="images/favicon.png">
 
-      <form>
-        <input type="hidden" name="action" value="addToCart">
-        <input type="hidden" name="category" value="{{ category.id }}">
-        <input type="hidden" name="product" value="{{ product.id }}">
-        {% for option in product.options %}
-        <fieldset class="product-option">
-          <legend>{{ option.name }}</legend>
-          {% for attribute in option.attributes %}
-          {% capture input_id %}c{{ category.id }}p{{ product.id }}o{{ option.id }}a{{ attribute.id }}{% endcapture %}
-          <input class="{{ option.name | downcase }}" type="radio"
-                 name="o{{ option.id }}" value="a{{ attribute.id }}"
-                 id="{{ input_id }}" required>
-          <label for="{{ input_id }}">{{ attribute.name }}</label>
-          {% endfor %}
-        </fieldset>
-        {% endfor %}
-        <input type="submit" class="btn btn-primary" value="Add">
-      </form>
-    </article>
-    {% endfor %}
-  </section>
-</section>
-{% endfor %}
+  <link rel="stylesheet" type="text/css"
+        href="https://rsms.me/inter/inter.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+        rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="css/grid-system.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+
+  <script defer src="js/handlebars.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+
+
+<body>
+<script id="template" type="text/x-handlebars-template">
+  <header class="header">
+    <h1>The Shop</h1>
+    <nav class="nav">
+      <div class="cart">
+        <ul class="cart-list">
+
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    {{#each categories}}
+    <section class="category-section">
+      <h2 class="category-name">{{categoryName}}</h2>
+
+      <section class="products grid columns-6">
+        {{#each products}}
+        <article class="c-2 c-m-3">
+          <img class="product-image" src="{{imgUri}}"
+               alt="{{name}}">
+          <h3 class="product-name">{{productName}}</h3>
+          <p class="price">{{price}}</p>
+
+          <form>
+            <input type="hidden" name="action" value="add">
+            <input type="hidden" name="category" value="{{../categoryID}}">
+            <input type="hidden" name="product" value="{{productID}}">
+            {{#each options}}
+            <fieldset class="product-option">
+              <legend>{{optionName}}</legend>
+              {{#each attributes as |attributeValue attributeID|}}
+              <input class="{{../optionName}}" type="radio"
+                     name="{{../optionID}}" value="{{attributeID}}"
+                     id="{{../../../categoryID}}_{{../../productID}}_{{../optionID}}_{{attributeID}}" required>
+              <label for="{{../../../categoryID}}_{{../../productID}}_{{../optionID}}_{{attributeID}}">{{attributeValue}}</label>
+              {{/each}}
+            </fieldset>
+            {{/each}}
+            <button type="submit" class="btn btn-primary">Add to cart</button>
+          </form>
+        </article>
+        {{/each}}
+      </section>
+    </section>
+    {{/each}}
+  </main>
+
+  <footer>
+    <p>The Shop, 2019</p>
+  </footer>
+</script>
+</body>
+
+</html>

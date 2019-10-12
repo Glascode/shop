@@ -20,13 +20,15 @@ $accent: $green;
 // Resets
 
 html {
-  font-size: 16px;
+  font-size: 13px;
 }
 
 body {
   margin: 0;
   font-family: Inter, sans-serif;
 }
+
+// Typography
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
@@ -37,35 +39,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3.3rem;
-  letter-spacing: -.045em;
+  font-size: 2.5rem;
   font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
 h2 {
-  font-size: 2.5rem;
-  letter-spacing: -.035em;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 h3 {
-  font-size: 2rem;
-  letter-spacing: -.03em;
+  font-size: 1.75rem;
 }
 
 h4 {
-  font-size: 1.75rem;
-  letter-spacing: -.02em;
+  font-size: 1.5rem;
 }
 
 h5 {
   font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: -.01em;
 }
 
 h6 {
   font-size: 1rem;
-  font-weight: 600;
 }
 
 p {
@@ -81,6 +80,8 @@ a {
     text-decoration: underline $accent;
   }
 }
+
+// Misc
 
 img {
   width: 100%;

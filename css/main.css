@@ -1,5 +1,5 @@
 html {
-  font-size: 16px;
+  font-size: 13px;
 }
 
 body {
@@ -16,35 +16,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3.3rem;
-  letter-spacing: -0.045em;
+  font-size: 2.5rem;
   font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
 h2 {
-  font-size: 2.5rem;
-  letter-spacing: -0.035em;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 h3 {
-  font-size: 2rem;
-  letter-spacing: -0.03em;
+  font-size: 1.75rem;
 }
 
 h4 {
-  font-size: 1.75rem;
-  letter-spacing: -0.02em;
+  font-size: 1.5rem;
 }
 
 h5 {
   font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
 }
 
 h6 {
   font-size: 1rem;
-  font-weight: 600;
 }
 
 p {
@@ -86,10 +83,21 @@ legend {
 }
 
 header, main, footer {
-  max-width: 1200px;
-  margin: auto;
   padding-left: 5%;
   padding-right: 5%;
+}
+
+header {
+  margin-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+footer {
+  margin-top: 3rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  color: #fff;
+  background-color: #000;
 }
 
 .cart-icon {
@@ -113,7 +121,6 @@ header, main, footer {
 .cart-item-image {
   display: block;
   width: 5rem;
-  border-radius: 0.2rem;
 }
 
 .cart-item-name {
@@ -122,11 +129,20 @@ header, main, footer {
 }
 
 .cart-item-price {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 .category-section {
-  margin-bottom: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #000;
+}
+.category-section:not(:first-of-type) {
+  margin-top: 4rem;
+}
+
+.category-name {
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
 }
 
 .products {
@@ -137,21 +153,15 @@ header, main, footer {
   object-fit: cover;
   object-position: center;
   margin-bottom: 0.5rem;
-  border-radius: 0.3rem;
 }
 
 .product-name {
-  font-size: 1.5rem;
   margin-bottom: 0.3rem;
+  font-size: 1.25rem;
 }
 
-.product-price {
-  font-size: 0.9rem;
+.price {
   color: #888;
-}
-
-.product-option {
-  margin-bottom: 0.8rem;
 }
 
 .btn {
@@ -165,7 +175,6 @@ header, main, footer {
   border: 1px solid transparent;
   font-size: 1rem;
   line-height: 1.5;
-  border-radius: 0.2rem;
   transition: color 0.1s, background-color 0.1s ease-in-out, border-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
   user-select: none;
 }
@@ -178,6 +187,32 @@ header, main, footer {
 .btn-primary:hover {
   background-color: #262626;
   border-color: #262626;
+}
+
+fieldset {
+  margin-bottom: 1.5rem;
+}
+
+legend {
+  margin-bottom: 1rem;
+}
+
+input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.3rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+input:checked + label {
+  border: 1px solid black;
 }
 
 /*# sourceMappingURL=main.css.map */

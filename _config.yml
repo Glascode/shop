@@ -1,9 +1,0 @@
-# Site settings
-title: "Shop"
-description: ""
-baseurl: "/shop"
-
-# Build settings
-include: ["_pages"]  # include more files
-kramdown:
-  input: GFM

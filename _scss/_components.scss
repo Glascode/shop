@@ -13,7 +13,6 @@
   border: 1px solid transparent;
   font-size: 1rem;
   line-height: 1.5;
-  border-radius: .2rem;
   transition: color .1s, background-color .1s ease-in-out, border-color .1s ease-in-out, box-shadow .1s ease-in-out;
   user-select: none;
 }
@@ -27,4 +26,32 @@
     background-color: lighten($black, 15%);
     border-color: lighten($black, 15%);
   }
+}
+
+// Form controls
+
+fieldset {
+  margin-bottom: 1.5rem;
+}
+
+legend {
+  margin-bottom: 1rem;
+}
+
+input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: .3rem;
+  padding: .3rem .5rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+input:checked + label {
+  border: 1px solid black;
 }
