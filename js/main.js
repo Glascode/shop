@@ -114,6 +114,7 @@ const data = {
   }
 };
 
+/* Handlebars template processing */
 const template = document.querySelector('#template').innerHTML;
 const templateScript = Handlebars.compile(template);
 const html = templateScript(data);
@@ -121,13 +122,18 @@ const html = templateScript(data);
 document.body.innerHTML = html;
 
 
+/* Custom JavaScript */
+
+/* Cart */
 const cart = document.querySelector('.cart');
 const cartList = document.querySelector('.cart-list');
+
 
 /* Cart button listener */
 document.querySelector('.cart-button').addEventListener('click', () => {
   cartList.classList.toggle('show');
 });
+
 
 /* Cart list position adjustment */
 function adjustCartListPosition() {
@@ -137,16 +143,79 @@ function adjustCartListPosition() {
 adjustCartListPosition();
 window.onresize = adjustCartListPosition;
 
-/* Forms validation listeners */
+
+/* Form and local storage management */
+
+/**
+ * Returns true if all options of the form are set.
+ * @param form The form being submitted.
+ * @returns {boolean} true if all options of the form are set ; false otherwise.
+ */
+function validateOptions(form) {
+  for (let fieldset of form.querySelectorAll('fieldset')) {
+    let options = fieldset.querySelectorAll('input[type="radio"]:checked');
+    if (options.length !== 1) {
+      form.querySelector('.error').textContent = 'Please make sure you selected all the options.';
+      return false;
+    }
+  }
+  return true;
+}
+
+/**
+ * Stores an item in the 'cart' localStorage.
+ * @param item The item to be stored in the 'cart' localStorage.
+ */
+function storeItem(item) {
+  let cart = localStorage.getItem('cart');
+  cart = cart ? JSON.parse(cart) : [];
+  cart.push(item);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  console.log('cart: ', localStorage.getItem('cart'));
+}
+
+console.log(localStorage);
+
+/**
+ * Processes a form.
+ * @param form The form being submitted.
+ */
+function processForm(form) {
+  const action = form.querySelector('input[name="action"]').value;
+
+  if (action === 'add') {
+
+    /* Get elements */
+    const categoryID = form.querySelector('input[name="categoryID"]').value;
+    const productID = form.querySelector('input[name="productID"]').value;
+    const options = form.querySelectorAll('input[name^="O-"]');
+
+    /* Create item */
+    let item = {};
+    item.categoryID = categoryID;
+    item.productID = productID;
+    for (let option of options) {
+      item[option.name] = option.value;
+    }
+
+    /* Store item */
+    storeItem(item);
+  } else if (action === 'remove') {
+
+  }
+}
+
+/* Form validation listener */
 document.querySelectorAll('form').forEach(form => {
   form.addEventListener('submit', e => {
-    for (let fieldset of form.querySelectorAll('fieldset')) {
-      let options = fieldset.querySelectorAll('input[type="radio"]:checked');
-      if (options.length !== 1) {
-        e.preventDefault();
-        form.querySelector('.error').textContent = 'Please make sure you selected all the options.';
-        return;
-      }
+    let valid = true;
+    valid = validateOptions(form) && valid;
+
+    if (!valid) {
+      e.preventDefault();
+    } else {
+      e.preventDefault(); // TODO: debug only
+      processForm(form);
     }
   });
 });

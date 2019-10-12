@@ -30,7 +30,8 @@
 
     <nav class="cart">
       <button class="cart-button">
-        <i class="material-icons-sharp cart-icon">work_outline</i> 2
+        <i class="material-icons-sharp cart-icon">work_outline</i>
+        <span class="cart-button__number">2</span>
       </button>
       <ul class="cart-list show">
         <li class="cart-item">
@@ -63,8 +64,8 @@
 
           <form>
             <input type="hidden" name="action" value="add">
-            <input type="hidden" name="category" value="{{../categoryID}}">
-            <input type="hidden" name="product" value="{{productID}}">
+            <input type="hidden" name="categoryID" value="{{../categoryID}}">
+            <input type="hidden" name="productID" value="{{productID}}">
             {{#each options}}
             <fieldset class="product-option">
               <legend>{{optionName}}</legend>

@@ -56,8 +56,11 @@ footer {
 
 .cart-list {
   display: none;
+  width: 25rem;
+  max-width: 80vw;
   margin: 0;
   padding: .8rem;
+  background-color: #fff;
   border: 1px solid #000;
   list-style: none;
 
@@ -68,7 +71,7 @@ footer {
 
 .cart-item {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
 
   &:not(:last-of-type) {
     margin-bottom: 1rem;
@@ -81,8 +84,7 @@ footer {
 }
 
 .cart-item__info {
-  min-width: 15rem;
-  max-width: 20rem;
+  flex-grow: 1;
 
   p {
     margin-bottom: .3rem;
