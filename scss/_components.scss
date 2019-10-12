@@ -2,7 +2,8 @@
 
 // Buttons
 
-button {
+button[type="button"],
+button[type="submit"] {
   display: inline-block;
   padding: .25rem .7rem;
   font-weight: 400;
@@ -52,4 +53,11 @@ input:checked + label {
   color: #fff;
   background-color: #000;
   border: 1px solid black;
+}
+
+// Misc
+
+.error {
+  margin-bottom: 1rem;
+  color: #db3131;
 }

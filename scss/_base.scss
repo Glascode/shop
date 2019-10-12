@@ -1,22 +1,5 @@
 // Base
 
-// Variables
-
-$white: #fff !default;
-$black: #000 !default;
-
-$blue: #007aff !default;
-$green: #28cd41 !default;
-$orange: #ff9500 !default;
-$pink: #ff2d55 !default;
-$purple: #af52de !default;
-$red: #ff3b30 !default;
-$teal: #5ac8fa !default;
-$yellow: #ffcc00 !default;
-
-$accent: $green;
-
-
 // Resets
 
 html {
@@ -25,7 +8,7 @@ html {
 
 body {
   margin: 0;
-  font-family: Inter, sans-serif;
+  font-family: Inter, Helvetica Neue, Helvetica, sans-serif;
 }
 
 // Typography
@@ -73,11 +56,11 @@ p {
 }
 
 a {
-  color: $accent;
-  text-decoration: none;
+  color: currentColor;
+  text-decoration: underline rgba(#000, .4);
 
   &:hover {
-    text-decoration: underline $accent;
+    text-decoration-color: #000;
   }
 }
 

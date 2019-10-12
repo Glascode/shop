@@ -56,6 +56,32 @@ const data = {
         },
         "2": {
           "productID": "P-3",
+          "productName": "Jumper",
+          "imgUri": "https://imgur.com/9uqCna7.jpg",
+          "price": "29.99",
+          "options": {
+            "1": {
+              "optionID": "O-1",
+              "optionName": "Size",
+              "attributes": {
+                "A-1": "S",
+                "A-2": "M",
+                "A-3": "L"
+              }
+            },
+            "2": {
+              "optionID": "O-2",
+              "optionName": "Color",
+              "attributes": {
+                "A-1": "Red",
+                "A-2": "Pink",
+                "A-3": "Green"
+              }
+            }
+          }
+        },
+        "3": {
+          "productID": "P-4",
           "productName": "Shoes",
           "imgUri": "https://imgur.com/oE198Ub.jpg",
           "price": "49.99",
@@ -78,7 +104,7 @@ const data = {
       "categoryID": "C-3",
       "products": {
         "1": {
-          "productID": "P-4",
+          "productID": "P-5",
           "productName": "Chair",
           "imgUri": "https://imgur.com/yIswGLg.jpg",
           "price": "24.99"
@@ -94,15 +120,32 @@ const html = templateScript(data);
 
 document.body.innerHTML = html;
 
+
+const cart = document.querySelector('.cart');
+const cartList = document.querySelector('.cart-list');
+
+/* Cart button listener */
+document.querySelector('.cart-button').addEventListener('click', () => {
+  cartList.classList.toggle('show');
+});
+
+/* Cart list position adjustment */
+function adjustCartListPosition() {
+  cartList.style.top = `${cart.offsetHeight + 1}px`;
+}
+
+adjustCartListPosition();
+window.onresize = adjustCartListPosition;
+
+/* Forms validation listeners */
 document.querySelectorAll('form').forEach(form => {
   form.addEventListener('submit', e => {
-    e.preventDefault();
-    for (let element of form.elements) {
-      if (element.value === '') {
-        console.log(element);
-        const error = document.createElement('div');
-        error.textContent = 'Please fill-out all fields.';
-        form.append(error);
+    for (let fieldset of form.querySelectorAll('fieldset')) {
+      let options = fieldset.querySelectorAll('input[type="radio"]:checked');
+      if (options.length !== 1) {
+        e.preventDefault();
+        form.querySelector('.error').textContent = 'Please make sure you selected all the options.';
+        return;
       }
     }
   });

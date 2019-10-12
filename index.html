@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="description" content="A simple shopping website">
 
-  <title>The Shop</title>
+  <title>Shop</title>
 
   <link rel="icon" type="image/png" href="images/favicon.png">
 
   <link rel="stylesheet" type="text/css"
         href="https://rsms.me/inter/inter.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
         rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="css/grid-system.min.css">
@@ -25,14 +25,26 @@
 
 <body>
 <script id="template" type="text/x-handlebars-template">
-  <header class="header">
-    <h1>The Shop</h1>
-    <nav class="nav">
-      <div class="cart">
-        <ul class="cart-list">
+  <header>
+    <h1>Shop</h1>
 
-        </ul>
-      </div>
+    <nav class="cart">
+      <button class="cart-button">
+        <i class="material-icons-sharp cart-icon">work_outline</i> 2
+      </button>
+      <ul class="cart-list show">
+        <li class="cart-item">
+          <img class="cart-item__image" src="https://imgur.com/9uqCna7.jpg" alt="Jumper">
+          <div class="cart-item__info">
+            <div class="cart-item__info_header">
+              <h4>Jumper</h4>
+              <p>29.99</p>
+            </div>
+            <p>Size: M</p>
+            <p>Color: Black</p>
+          </div>
+        </li>
+      </ul>
     </nav>
   </header>
 
@@ -47,7 +59,7 @@
           <img class="product-image" src="{{imgUri}}"
                alt="{{name}}">
           <h3 class="product-name">{{productName}}</h3>
-          <p class="price">{{price}}</p>
+          <p class="product-price">{{price}}</p>
 
           <form>
             <input type="hidden" name="action" value="add">
@@ -64,7 +76,8 @@
               {{/each}}
             </fieldset>
             {{/each}}
-            <button type="submit" class="btn btn-primary">Add to cart</button>
+            <div class="error"></div>
+            <button type="submit">Add to cart</button>
           </form>
         </article>
         {{/each}}
