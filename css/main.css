@@ -89,11 +89,20 @@ header, main, footer {
 }
 
 header {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 2rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+header h1 {
+  margin-bottom: 0;
 }
 
 footer {
@@ -136,6 +145,8 @@ footer {
   display: none;
   width: 25rem;
   max-width: 80vw;
+  max-height: 70vh;
+  overflow: auto;
   margin: 0;
   padding: 0.8rem;
   background-color: #fff;
@@ -151,9 +162,16 @@ footer {
 .cart-item {
   display: flex;
   align-items: flex-start;
+  padding: 0.8rem 0;
+}
+.cart-item:first-of-type {
+  padding-top: 0;
+}
+.cart-item:last-of-type {
+  padding-bottom: 0;
 }
 .cart-item:not(:last-of-type) {
-  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .cart-item__image {
@@ -170,7 +188,6 @@ footer {
 
 .cart-item__info_header {
   display: flex;
-  justify-content: space-between;
   margin-bottom: 0.5rem;
 }
 .cart-item__info_header h4 {
@@ -178,8 +195,12 @@ footer {
   font-size: 1.2rem;
 }
 .cart-item__info_header p {
-  margin-left: 0.5rem;
+  margin-left: 0.8rem;
   margin-bottom: 0;
+}
+
+.cart-item__submit-button {
+  float: right;
 }
 
 .category-section:not(:first-of-type) {
@@ -224,6 +245,18 @@ button[type=submit] {
   line-height: 1.5;
   user-select: none;
   outline: 0;
+}
+button[type=button].cart-item__submit-button,
+button[type=submit].cart-item__submit-button {
+  color: #000;
+  background-color: transparent;
+  border-style: dashed;
+}
+button[type=button].cart-item__submit-button:hover,
+button[type=submit].cart-item__submit-button:hover {
+  color: #000;
+  background-color: transparent;
+  border-style: solid;
 }
 button[type=button]:hover,
 button[type=submit]:hover {

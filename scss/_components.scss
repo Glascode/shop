@@ -17,6 +17,18 @@ button[type="submit"] {
   user-select: none;
   outline: 0;
 
+  &.cart-item__submit-button {
+    color: #000;
+    background-color: transparent;
+    border-style: dashed;
+
+    &:hover {
+      color: #000;
+      background-color: transparent;
+      border-style: solid;
+    }
+  }
+
   &:hover {
     background-color: lighten(#000, 15%);
   }

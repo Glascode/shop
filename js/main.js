@@ -114,7 +114,8 @@ const data = {
   }
 };
 
-/* Handlebars template processing */
+/*********************** Handlebars template processing ***********************/
+
 const template = document.querySelector('#template').innerHTML;
 const templateScript = Handlebars.compile(template);
 const html = templateScript(data);
@@ -122,7 +123,7 @@ const html = templateScript(data);
 document.body.innerHTML = html;
 
 
-/* Custom JavaScript */
+/***************************** Custom JavaScript ******************************/
 
 /* Cart */
 const cart = document.querySelector('.cart');
@@ -144,7 +145,7 @@ adjustCartListPosition();
 window.onresize = adjustCartListPosition;
 
 
-/* Form and local storage management */
+/********************* Forms and local storage management **********************/
 
 /**
  * Returns true if all options of the form are set.
@@ -173,36 +174,79 @@ function storeItem(item) {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-console.log(localStorage);
-
-
 /**
- * Updates the whole cart with the current localStorage values.
- * This method allows to show only effectively stored items in the cart.
+ * Removes an item in the 'cart' localStorage.
+ * @param item The item to be removed from the 'cart' localStorage.
+ * @returns {boolean} false if the 'cart' localStorage is empty.
  */
-function updateCart() {
+function removeItem(item) {
   let cart = localStorage.getItem('cart');
   cart = cart ? JSON.parse(cart) : [];
+  if (cart === undefined || cart.length === 0) {
+    return false;
+  }
+
+  // Find the index of the element to be removed and remove it from the cart
+  const index = cart.findIndex(element => {
+    return element.categoryID === item.categoryID && element.productID === item.productID;
+  });
+  cart.splice(index, 1);
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+/**
+ * Handles the cart-item form.
+ * @param e The event which has occurred.
+ */
+function handleCartItemForm(e) {
+  e.preventDefault();
+  processForm(e.currentTarget);
+}
+
+/**
+ * Updates the whole cart-list with the current localStorage values.
+ * This method allows to show only effectively stored items in the cart.
+ */
+function updateCartList() {
+  let cart = localStorage.getItem('cart');
+  cart = cart ? JSON.parse(cart) : [];
+
+  const cartNumberOfItemsButton = document.querySelector('.cart-button__number');
 
   const cartList = document.querySelector('.cart-list');
   cartList.innerHTML = ''; // empty cart-list
 
   // Add items to cart-list
   if (cart === undefined || cart.length === 0) {
+    cartNumberOfItemsButton.textContent = 0;
+
     const p = document.createElement('p');
     p.textContent = 'Your cart is empty. Start by adding some items.';
     cartList.append(p);
   } else {
+    cartNumberOfItemsButton.textContent = cart.length;
+
     cart.forEach(item => {
-      // Create DOM elements with their classes
-      const cartItem = document.createElement('div');
+      // Init cart-item form element
+      const cartItem = document.createElement('form');
+      cartItem.addEventListener('submit', handleCartItemForm);
       cartItem.classList.add('cart-item');
+      const actionInput = document.createElement('input');
+      actionInput.type = 'hidden';
+      actionInput.name = 'action';
+      actionInput.value = 'remove';
+      cartItem.append(actionInput);
+
+      // Create display elements
       const cartItemImage = document.createElement('img');
       cartItemImage.classList.add('cart-item__image');
       const cartItemInfo = document.createElement('div');
       cartItemInfo.classList.add('cart-item__info');
       const cartItemInfoHeader = document.createElement('div');
       cartItemInfoHeader.classList.add('cart-item__info_header');
+      const cartItemInfoContent = document.createElement('div');
+      cartItemInfoContent.classList.add('cart-item__info_content');
 
       // Retrieve the category corresponding to the item.categoryID
       let category = Object.values(data.categories).find(element => {
@@ -214,6 +258,18 @@ function updateCart() {
         return element.productID === item.productID;
       });
 
+      // Last form elements
+      const categoryIDInput = document.createElement('input');
+      categoryIDInput.type = 'hidden';
+      categoryIDInput.name = 'categoryID';
+      categoryIDInput.value = category.categoryID;
+      const productIDInput = document.createElement('input');
+      productIDInput.type = 'hidden';
+      productIDInput.name = 'productID';
+      productIDInput.value = product.productID;
+
+      cartItem.append(categoryIDInput, productIDInput);
+
       // Image
       cartItemImage.src = product.imgUri;
       cartItemImage.alt = product.productName;
@@ -223,9 +279,6 @@ function updateCart() {
       titleElement.textContent = product.productName;
       let priceElement = document.createElement('p');
       priceElement.textContent = product.price;
-      cartItemInfoHeader.append(titleElement, priceElement);
-
-      cartItemInfo.append(cartItemInfoHeader);
 
       // Info options
       if (product.options) {
@@ -242,9 +295,17 @@ function updateCart() {
           cartItemInfoOptions.append(optionElement);
         }
 
-        cartItemInfo.append(cartItemInfoOptions);
+        cartItemInfoContent.append(cartItemInfoOptions);
       }
 
+      const cartItemSubmitButton = document.createElement('button');
+      cartItemSubmitButton.type = 'submit';
+      cartItemSubmitButton.classList.add('cart-item__submit-button');
+      cartItemSubmitButton.textContent = 'Remove';
+
+      cartItemInfoHeader.append(titleElement, priceElement);
+      cartItemInfoContent.append(cartItemSubmitButton);
+      cartItemInfo.append(cartItemInfoHeader, cartItemInfoContent);
       cartItem.append(cartItemImage, cartItemInfo);
       cartList.append(cartItem);
     });
@@ -256,47 +317,54 @@ function updateCart() {
  * @param form The form being submitted.
  */
 function processForm(form) {
+
+  /* Get form elements */
   const action = form.querySelector('input[name="action"]').value;
+  const categoryID = form.querySelector('input[name="categoryID"]').value;
+  const productID = form.querySelector('input[name="productID"]').value;
 
+  /* Create item object */
+  let item = {};
+  item.categoryID = categoryID;
+  item.productID = productID;
+
+  /* Perform action */
   if (action === 'add') {
-
-    /* Get elements */
-    const categoryID = form.querySelector('input[name="categoryID"]').value;
-    const productID = form.querySelector('input[name="productID"]').value;
     let options = [];
     for (let fieldset of form.querySelectorAll('fieldset')) {
       options.push(fieldset.querySelector('input[name^="O-"]:checked'));
     }
 
-    /* Create item */
-    let item = {};
-    item.categoryID = categoryID;
-    item.productID = productID;
     for (let option of options) {
       item[option.name] = option.value;
     }
 
-    /* Store item */
-    storeItem(item);
-    updateCart();
+    storeItem(item); // store item
+    updateCartList();
   } else if (action === 'remove') {
-
+    removeItem(item); // remove item
+    updateCartList();
   }
 }
 
-/* Form validation listener */
-document.querySelectorAll('form').forEach(form => {
+/* Update cart before adding the event listener */
+updateCartList();
+
+/* Product forms validation listener */
+document.querySelectorAll('.product-form').forEach(form => {
   form.addEventListener('submit', e => {
     let valid = true;
     valid = validateOptions(form) && valid;
 
-    if (!valid) {
-      e.preventDefault();
-    } else {
-      e.preventDefault(); // TODO: only for debugging
-      processForm(form);
+    e.preventDefault();
+
+    if (valid) {
+      processForm(e.currentTarget);
     }
   });
 });
 
-updateCart();
+/* Cart item forms validation listener */
+document.querySelectorAll('.cart-item').forEach(form => {
+  form.addEventListener('submit', handleCartItemForm);
+});

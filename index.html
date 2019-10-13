@@ -33,20 +33,27 @@
         <i class="material-icons-sharp cart-icon">work_outline</i>
         <span class="cart-button__number">2</span>
       </button>
-      <div class="cart-list show">
-        <div class="cart-item">
+      <div class="cart-list">
+        <form class="cart-item">
+          <!-- cart-item template, will be replaced with JavaScript -->
+          <input type="hidden" name="action" value="remove">
+          <input type="hidden" name="categoryID" value="categoryID">
+          <input type="hidden" name="productID" value="productID">
           <img class="cart-item__image" src="https://imgur.com/9uqCna7.jpg" alt="Jumper">
           <div class="cart-item__info">
             <div class="cart-item__info_header">
               <h4>Jumper</h4>
               <p>29.99</p>
             </div>
-            <div class="cart-item__info_options">
-              <p>Size: M</p>
-              <p>Color: Black</p>
+            <div class="cart-item__info_content">
+              <div class="cart-item__info_options">
+                <p>Size: M</p>
+                <p>Color: Black</p>
+              </div>
+              <button type="submit" class="cart-item__submit-button">Remove</button>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </nav>
   </header>
@@ -64,7 +71,7 @@
           <h3 class="product-name">{{productName}}</h3>
           <p class="product-price">{{price}}</p>
 
-          <form>
+          <form class="product-form">
             <input type="hidden" name="action" value="add">
             <input type="hidden" name="categoryID" value="{{../categoryID}}">
             <input type="hidden" name="productID" value="{{productID}}">

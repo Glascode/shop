@@ -6,11 +6,21 @@ header, main, footer {
 }
 
 header {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 2rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(#000, .1);
+
+  h1 {
+    margin-bottom: 0;
+  }
 }
 
 footer {
@@ -58,6 +68,8 @@ footer {
   display: none;
   width: 25rem;
   max-width: 80vw;
+  max-height: 70vh;
+  overflow: auto;
   margin: 0;
   padding: .8rem;
   background-color: #fff;
@@ -75,9 +87,18 @@ footer {
 .cart-item {
   display: flex;
   align-items: flex-start;
+  padding: .8rem 0;
+
+  &:first-of-type {
+    padding-top: 0;
+  }
+
+  &:last-of-type {
+    padding-bottom: 0;
+  }
 
   &:not(:last-of-type) {
-    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(#000, .1);
   }
 }
 
@@ -96,7 +117,6 @@ footer {
 
 .cart-item__info_header {
   display: flex;
-  justify-content: space-between;
   margin-bottom: .5rem;
 
   h4 {
@@ -105,9 +125,13 @@ footer {
   }
 
   p {
-    margin-left: .5rem;
+    margin-left: .8rem;
     margin-bottom: 0;
   }
+}
+
+.cart-item__submit-button {
+  float: right;
 }
 
 // Page
