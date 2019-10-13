@@ -1,6 +1,6 @@
-# The Shop
+# Shop
 
-A minimal shopping page, generated with Handlebars.js.
+A minimal e-commerce page, generated with Handlebars.js.
 
 ## Installation
 

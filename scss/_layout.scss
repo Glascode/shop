@@ -24,6 +24,8 @@ header {
 }
 
 footer {
+  display: flex;
+  justify-content: space-between;
   margin-top: 3rem;
   padding-top: 5rem;
   padding-bottom: 5rem;

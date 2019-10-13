@@ -1,5 +1,9 @@
 // Base
 
+// Variables
+
+$accent: #40ea51;
+
 // Resets
 
 html {
@@ -57,11 +61,11 @@ p {
 }
 
 a {
-  color: currentColor;
-  text-decoration: underline rgba(#000, .4);
+  color: $accent;
+  text-decoration: none;
 
   &:hover {
-    text-decoration-color: #000;
+    text-decoration: underline;
   }
 }
 
