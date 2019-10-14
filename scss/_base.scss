@@ -2,7 +2,12 @@
 
 // Variables
 
+$gray-1: #f0f0f0;
+$gray-2: #eaeaea;
+$gray-3: #ccc;
 $accent: #40ea51;
+
+$border-radius: .1rem;
 
 // Resets
 
@@ -36,7 +41,6 @@ h1 {
 h2 {
   font-size: 2rem;
   font-weight: 700;
-  text-transform: uppercase;
 }
 
 h3 {

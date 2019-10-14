@@ -16,7 +16,7 @@ header {
   padding-top: 2rem;
   padding-bottom: 2rem;
   background-color: #fff;
-  border-bottom: 1px solid rgba(#000, .1);
+  border-bottom: 1px solid $gray-2;
 
   h1 {
     margin-bottom: 0;
@@ -40,7 +40,7 @@ footer {
 
   .cart-list {
     position: absolute;
-    top: 30px;
+    top: 35px;
     right: 0;
   }
 }
@@ -51,19 +51,28 @@ footer {
   padding: .3rem;
   font-family: inherit;
   font-size: inherit;
-  font-weight: 700;
   background: none;
   border: 1px dotted transparent;
+  border-radius: $border-radius;
   cursor: pointer;
   outline: 0;
+
+  &:hover {
+    background-color: $gray-1;
+  }
 
   &:focus {
     border-color: #000;
   }
+}
 
-  .cart-icon {
-    margin-right: .3rem;
-  }
+.cart-button__icon {
+  margin-right: .3rem;
+}
+
+.cart-button__number {
+  margin-left: .5rem;
+  font-weight: 500;
 }
 
 .cart-list {
@@ -76,6 +85,7 @@ footer {
   padding: .8rem;
   background-color: #fff;
   border: 1px solid #000;
+  border-radius: $border-radius;
 
   &.show {
     display: block;
@@ -100,13 +110,14 @@ footer {
   }
 
   &:not(:last-of-type) {
-    border-bottom: 1px solid rgba(#000, .1);
+    border-bottom: 1px solid $gray-1;
   }
 }
 
 .cart-item__image {
   width: 6rem;
   margin-right: 1rem;
+  border-radius: $border-radius;
 }
 
 .cart-item__info {
@@ -144,7 +155,9 @@ footer {
 
 .category-name {
   margin-bottom: 1.5rem;
-  font-size: 1.75rem;
+  padding-top: 1rem;
+  font-size: 3rem;
+  letter-spacing: -.03em;
 }
 
 .products {
@@ -155,6 +168,7 @@ footer {
   object-fit: cover;
   object-position: center;
   margin-bottom: .5rem;
+  border-radius: $border-radius;
 }
 
 .product-name {

@@ -26,7 +26,6 @@ h1 {
 h2 {
   font-size: 2rem;
   font-weight: 700;
-  text-transform: uppercase;
 }
 
 h3 {
@@ -99,7 +98,7 @@ header {
   padding-top: 2rem;
   padding-bottom: 2rem;
   background-color: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #eaeaea;
 }
 header h1 {
   margin-bottom: 0;
@@ -120,7 +119,7 @@ footer {
 }
 .cart .cart-list {
   position: absolute;
-  top: 30px;
+  top: 35px;
   right: 0;
 }
 
@@ -130,17 +129,26 @@ footer {
   padding: 0.3rem;
   font-family: inherit;
   font-size: inherit;
-  font-weight: 700;
   background: none;
   border: 1px dotted transparent;
+  border-radius: 0.1rem;
   cursor: pointer;
   outline: 0;
+}
+.cart-button:hover {
+  background-color: #f0f0f0;
 }
 .cart-button:focus {
   border-color: #000;
 }
-.cart-button .cart-icon {
+
+.cart-button__icon {
   margin-right: 0.3rem;
+}
+
+.cart-button__number {
+  margin-left: 0.5rem;
+  font-weight: 500;
 }
 
 .cart-list {
@@ -153,6 +161,7 @@ footer {
   padding: 0.8rem;
   background-color: #fff;
   border: 1px solid #000;
+  border-radius: 0.1rem;
 }
 .cart-list.show {
   display: block;
@@ -173,12 +182,13 @@ footer {
   padding-bottom: 0;
 }
 .cart-item:not(:last-of-type) {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .cart-item__image {
   width: 6rem;
   margin-right: 1rem;
+  border-radius: 0.1rem;
 }
 
 .cart-item__info {
@@ -211,7 +221,9 @@ footer {
 
 .category-name {
   margin-bottom: 1.5rem;
-  font-size: 1.75rem;
+  padding-top: 1rem;
+  font-size: 3rem;
+  letter-spacing: -0.03em;
 }
 
 .products {
@@ -222,6 +234,7 @@ footer {
   object-fit: cover;
   object-position: center;
   margin-bottom: 0.5rem;
+  border-radius: 0.1rem;
 }
 
 .product-name {
@@ -234,39 +247,46 @@ footer {
 }
 
 button[type=button],
-button[type=submit] {
+button[type=submit],
+input[type=submit] {
   display: inline-block;
-  padding: 0.25rem 0.7rem;
+  padding: 0.4rem 0.7rem;
+  font-size: 1rem;
   font-weight: 400;
   text-align: center;
   vertical-align: middle;
   color: #fff;
   background-color: #000;
   border: 1px solid #000;
-  font-size: 1rem;
+  border-radius: 0.1rem;
   line-height: 1.5;
   user-select: none;
   outline: 0;
 }
 button[type=button].cart-item__submit-button,
-button[type=submit].cart-item__submit-button {
+button[type=submit].cart-item__submit-button,
+input[type=submit].cart-item__submit-button {
   color: #000;
   background-color: transparent;
   border-style: dashed;
 }
 button[type=button].cart-item__submit-button:hover,
-button[type=submit].cart-item__submit-button:hover {
+button[type=submit].cart-item__submit-button:hover,
+input[type=submit].cart-item__submit-button:hover {
   color: #000;
   background-color: transparent;
   border-style: solid;
 }
 button[type=button]:hover,
-button[type=submit]:hover {
+button[type=submit]:hover,
+input[type=submit]:hover {
   background-color: #262626;
 }
 button[type=button]:focus, button[type=button]:active,
 button[type=submit]:focus,
-button[type=submit]:active {
+button[type=submit]:active,
+input[type=submit]:focus,
+input[type=submit]:active {
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
@@ -280,22 +300,23 @@ input[type=radio] {
 
 label {
   display: inline-block;
+  min-width: 1rem;
   margin-bottom: 0.3rem;
   padding: 0.3rem 0.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 0.1rem;
   cursor: pointer;
 }
 label:hover {
-  border-color: rgba(0, 0, 0, 0.5);
+  border-color: #000;
 }
-
 input:checked + label {
-  color: #fff;
-  background-color: #000;
-  border: 1px solid black;
+  background-color: #ccc;
+  border-color: #000;
 }
 
-.error {
+.message {
   margin-bottom: 1rem;
   color: #db3131;
 }

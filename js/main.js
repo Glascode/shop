@@ -114,257 +114,276 @@ const data = {
   }
 };
 
-/*********************** Handlebars template processing ***********************/
+document.addEventListener('DOMContentLoaded', () => {
 
-const template = document.querySelector('#template').innerHTML;
-const templateScript = Handlebars.compile(template);
-const html = templateScript(data);
+  /********************** Handlebars template processing **********************/
 
-document.body.innerHTML = html;
-
-
-/***************************** Custom JavaScript ******************************/
-
-/* Cart */
-const cart = document.querySelector('.cart');
-const cartList = document.querySelector('.cart-list');
+  const template = document.querySelector('#template').innerHTML;
+  const templateScript = Handlebars.compile(template);
+  document.body.innerHTML = templateScript(data);
 
 
-/* Cart button listener */
-document.querySelector('.cart-button').addEventListener('click', () => {
-  cartList.classList.toggle('show');
-});
+  /**************************** Custom JavaScript *****************************/
+
+  /* Cart */
+  const cart = document.querySelector('.cart');
+  const cartList = document.querySelector('.cart-list');
 
 
-/* Cart list position adjustment */
-function adjustCartListPosition() {
-  cartList.style.top = `${cart.offsetHeight + 1}px`;
-}
-
-adjustCartListPosition();
-window.onresize = adjustCartListPosition;
+  /* Cart button listener */
+  document.querySelector('.cart-button').addEventListener('click', () => {
+    cartList.classList.toggle('show');
+  });
 
 
-/********************* Forms and local storage management **********************/
+  /* Cart list position adjustment */
+  // Not working when Handlebars renders too late(?). Works with the CSS
+  // fallback. cartList.style.top = `${cart.offsetHeight + 1}px`;
 
-/**
- * Returns true if all options of the form are set.
- * @param form The form being submitted.
- * @returns {boolean} true if all options of the form are set ; false otherwise.
- */
-function validateOptions(form) {
-  for (let fieldset of form.querySelectorAll('fieldset')) {
-    let options = fieldset.querySelectorAll('input[type="radio"]:checked');
-    if (options.length !== 1) {
-      form.querySelector('.error').textContent = 'Please make sure you selected all the options.';
+
+  /******************* Forms and local storage management *********************/
+
+  function showMessage(status, text) {
+    const message = form.querySelector('.message');
+    message.classList.add(status);
+    message.textContent = text;
+  }
+
+  /**
+   * Returns true if all options of the form are set.
+   * @param form The form being submitted.
+   * @returns {boolean} true if all options of the form are set ; false
+   *   otherwise.
+   */
+  function validateOptions(form) {
+    for (let fieldset of form.querySelectorAll('fieldset')) {
+      let options = fieldset.querySelectorAll('input[type="radio"]:checked');
+      if (options.length !== 1) {
+        form.querySelector('.message').classList.add('error');
+        form.querySelector('.message').textContent = 'Please make sure you selected all of the options.';
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /**
+   * Stores an item in the 'cart' localStorage.
+   * @param item The item to be stored in the 'cart' localStorage.
+   */
+  function storeItem(item) {
+    let cart = localStorage.getItem('cart');
+    cart = cart ? JSON.parse(cart) : [];
+    cart.push(item);
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  /**
+   * Removes an item in the 'cart' localStorage.
+   * @param item The item to be removed from the 'cart' localStorage.
+   * @returns {boolean} false if the 'cart' localStorage is empty.
+   */
+  function removeItem(item) {
+    let cart = localStorage.getItem('cart');
+    cart = cart ? JSON.parse(cart) : [];
+    if (cart === undefined || cart.length === 0) {
       return false;
     }
-  }
-  return true;
-}
 
-/**
- * Stores an item in the 'cart' localStorage.
- * @param item The item to be stored in the 'cart' localStorage.
- */
-function storeItem(item) {
-  let cart = localStorage.getItem('cart');
-  cart = cart ? JSON.parse(cart) : [];
-  cart.push(item);
-  localStorage.setItem('cart', JSON.stringify(cart));
-}
+    // Find the index of the element to be removed and remove it from the cart
+    const index = cart.findIndex(element => {
+      return element.categoryID === item.categoryID && element.productID === item.productID;
+    });
+    cart.splice(index, 1);
 
-/**
- * Removes an item in the 'cart' localStorage.
- * @param item The item to be removed from the 'cart' localStorage.
- * @returns {boolean} false if the 'cart' localStorage is empty.
- */
-function removeItem(item) {
-  let cart = localStorage.getItem('cart');
-  cart = cart ? JSON.parse(cart) : [];
-  if (cart === undefined || cart.length === 0) {
-    return false;
+    localStorage.setItem('cart', JSON.stringify(cart));
   }
 
-  // Find the index of the element to be removed and remove it from the cart
-  const index = cart.findIndex(element => {
-    return element.categoryID === item.categoryID && element.productID === item.productID;
-  });
-  cart.splice(index, 1);
+  /**
+   * Handles the cart-item form.
+   * @param e The event which has occurred.
+   */
+  function handleCartItemForm(e) {
+    e.preventDefault();
+    processForm(e.currentTarget);
+  }
 
-  localStorage.setItem('cart', JSON.stringify(cart));
-}
+  /**
+   * Updates the whole cart-list with the current localStorage values.
+   * This method allows to show only effectively stored items in the cart.
+   */
+  function updateCartList() {
+    let cart = localStorage.getItem('cart');
+    cart = cart ? JSON.parse(cart) : [];
 
-/**
- * Handles the cart-item form.
- * @param e The event which has occurred.
- */
-function handleCartItemForm(e) {
-  e.preventDefault();
-  processForm(e.currentTarget);
-}
+    const cartButtonNumber = document.querySelector('.cart-button__number');
 
-/**
- * Updates the whole cart-list with the current localStorage values.
- * This method allows to show only effectively stored items in the cart.
- */
-function updateCartList() {
-  let cart = localStorage.getItem('cart');
-  cart = cart ? JSON.parse(cart) : [];
+    const cartList = document.querySelector('.cart-list');
+    cartList.innerHTML = ''; // empty cart-list
 
-  const cartNumberOfItemsButton = document.querySelector('.cart-button__number');
+    // Add items to cart-list
+    if (cart === undefined || cart.length === 0) {
+      cartButtonNumber.textContent = 0;
 
-  const cartList = document.querySelector('.cart-list');
-  cartList.innerHTML = ''; // empty cart-list
+      const p = document.createElement('p');
+      p.style.textAlign = 'center';
+      p.textContent = '— Your cart is empty —';
+      cartList.append(p);
+    } else {
+      cartButtonNumber.textContent = cart.length;
 
-  // Add items to cart-list
-  if (cart === undefined || cart.length === 0) {
-    cartNumberOfItemsButton.textContent = 0;
+      cart.forEach(item => {
+        // Init cart-item form element
+        const cartItem = document.createElement('form');
+        cartItem.addEventListener('submit', handleCartItemForm);
+        cartItem.classList.add('cart-item');
+        const actionInput = document.createElement('input');
+        actionInput.type = 'hidden';
+        actionInput.name = 'action';
+        actionInput.value = 'remove';
+        cartItem.append(actionInput);
 
-    const p = document.createElement('p');
-    p.textContent = 'Your cart is empty. Start by adding some items.';
-    cartList.append(p);
-  } else {
-    cartNumberOfItemsButton.textContent = cart.length;
+        // Create cart item DOM elements
+        const cartItemImage = document.createElement('img');
+        cartItemImage.classList.add('cart-item__image');
 
-    cart.forEach(item => {
-      // Init cart-item form element
-      const cartItem = document.createElement('form');
-      cartItem.addEventListener('submit', handleCartItemForm);
-      cartItem.classList.add('cart-item');
-      const actionInput = document.createElement('input');
-      actionInput.type = 'hidden';
-      actionInput.name = 'action';
-      actionInput.value = 'remove';
-      cartItem.append(actionInput);
+        const cartItemInfo = document.createElement('div');
+        cartItemInfo.classList.add('cart-item__info');
 
-      // Create display elements
-      const cartItemImage = document.createElement('img');
-      cartItemImage.classList.add('cart-item__image');
-      const cartItemInfo = document.createElement('div');
-      cartItemInfo.classList.add('cart-item__info');
-      const cartItemInfoHeader = document.createElement('div');
-      cartItemInfoHeader.classList.add('cart-item__info_header');
-      const cartItemInfoContent = document.createElement('div');
-      cartItemInfoContent.classList.add('cart-item__info_content');
+        const cartItemInfoHeader = document.createElement('div');
+        cartItemInfoHeader.classList.add('cart-item__info_header');
 
-      // Retrieve the category corresponding to the item.categoryID
-      let category = Object.values(data.categories).find(element => {
-        return element.categoryID === item.categoryID;
-      });
+        const cartItemInfoContent = document.createElement('div');
+        cartItemInfoContent.classList.add('cart-item__info_content');
 
-      // Retrieve the product with corresponding to the item.productID
-      let product = Object.values(category.products).find(element => {
-        return element.productID === item.productID;
-      });
+        // Retrieve the category corresponding to the item.categoryID
+        let category = Object.values(data.categories).find(element => {
+          return element.categoryID === item.categoryID;
+        });
 
-      // Last form elements
-      const categoryIDInput = document.createElement('input');
-      categoryIDInput.type = 'hidden';
-      categoryIDInput.name = 'categoryID';
-      categoryIDInput.value = category.categoryID;
-      const productIDInput = document.createElement('input');
-      productIDInput.type = 'hidden';
-      productIDInput.name = 'productID';
-      productIDInput.value = product.productID;
+        // Retrieve the product with corresponding to the item.productID
+        let product = Object.values(category.products).find(element => {
+          return element.productID === item.productID;
+        });
 
-      cartItem.append(categoryIDInput, productIDInput);
+        // Last form elements
+        const categoryIDInput = document.createElement('input');
+        categoryIDInput.type = 'hidden';
+        categoryIDInput.name = 'categoryID';
+        categoryIDInput.value = category.categoryID;
+        const productIDInput = document.createElement('input');
+        productIDInput.type = 'hidden';
+        productIDInput.name = 'productID';
+        productIDInput.value = product.productID;
 
-      // Image
-      cartItemImage.src = product.imgUri;
-      cartItemImage.alt = product.productName;
+        cartItem.append(categoryIDInput, productIDInput);
 
-      // Info header
-      let titleElement = document.createElement('h4');
-      titleElement.textContent = product.productName;
-      let priceElement = document.createElement('p');
-      priceElement.textContent = product.price;
+        // Image
+        cartItemImage.src = product.imgUri;
+        cartItemImage.alt = product.productName;
 
-      // Info options
-      if (product.options) {
-        const cartItemInfoOptions = document.createElement('div');
-        cartItemInfoOptions.classList.add('cart-item__info_options');
+        // Info header
+        let titleElement = document.createElement('h4');
+        titleElement.textContent = product.productName;
+        let priceElement = document.createElement('p');
+        priceElement.textContent = product.price;
 
-        for (let option of Object.values(product.options)) {
-          let attributeID = Object.keys(option.attributes).find(key => {
-            return key === item[option.optionID];
-          });
+        // Info options
+        if (product.options) {
+          const cartItemInfoOptions = document.createElement('div');
+          cartItemInfoOptions.classList.add('cart-item__info_options');
 
-          let optionElement = document.createElement('p');
-          optionElement.textContent = `${option.optionName}: ${option.attributes[attributeID]}`;
-          cartItemInfoOptions.append(optionElement);
+          for (let option of Object.values(product.options)) {
+            let attributeID = Object.keys(option.attributes).find(key => {
+              return key === item[option.optionID];
+            });
+
+            let optionElement = document.createElement('p');
+            optionElement.textContent = `${option.optionName}: ${option.attributes[attributeID]}`;
+            cartItemInfoOptions.append(optionElement);
+          }
+
+          cartItemInfoContent.append(cartItemInfoOptions);
         }
 
-        cartItemInfoContent.append(cartItemInfoOptions);
+        const cartItemSubmitButton = document.createElement('button');
+        cartItemSubmitButton.type = 'submit';
+        cartItemSubmitButton.classList.add('cart-item__submit-button');
+        cartItemSubmitButton.textContent = 'Remove';
+
+        cartItemInfoHeader.append(titleElement, priceElement);
+        cartItemInfoContent.append(cartItemSubmitButton);
+        cartItemInfo.append(cartItemInfoHeader, cartItemInfoContent);
+        cartItem.append(cartItemImage, cartItemInfo);
+        cartList.append(cartItem);
+      });
+    }
+  }
+
+  /**
+   * Processes a form.
+   * @param form The form being submitted.
+   */
+  function processForm(form) {
+
+    /* Get form elements */
+    const action = form.querySelector('input[name="action"]').value;
+    const categoryID = form.querySelector('input[name="categoryID"]').value;
+    const productID = form.querySelector('input[name="productID"]').value;
+
+    /* Create item object */
+    let item = {};
+    item.categoryID = categoryID;
+    item.productID = productID;
+
+    /* Perform action */
+    if (action === 'add') {
+      let options = [];
+      for (let fieldset of form.querySelectorAll('fieldset')) {
+        options.push(fieldset.querySelector('input[name^="O-"]:checked'));
       }
 
-      const cartItemSubmitButton = document.createElement('button');
-      cartItemSubmitButton.type = 'submit';
-      cartItemSubmitButton.classList.add('cart-item__submit-button');
-      cartItemSubmitButton.textContent = 'Remove';
+      for (let option of options) {
+        item[option.name] = option.value;
+      }
 
-      cartItemInfoHeader.append(titleElement, priceElement);
-      cartItemInfoContent.append(cartItemSubmitButton);
-      cartItemInfo.append(cartItemInfoHeader, cartItemInfoContent);
-      cartItem.append(cartItemImage, cartItemInfo);
-      cartList.append(cartItem);
+      storeItem(item); // store item
+      updateCartList();
+    } else if (action === 'remove') {
+      removeItem(item); // remove item
+      updateCartList();
+    }
+  }
+
+  /* Update cart before adding the event listener */
+  updateCartList();
+
+  /* Product forms validation listener */
+  document.querySelectorAll('.product-form').forEach(form => {
+    form.addEventListener('submit', e => {
+      let valid = true;
+      valid = validateOptions(form) && valid;
+
+      e.preventDefault();
+
+      if (valid) {
+        // Process form
+        processForm(e.currentTarget);
+
+        // Show cart-list for 1 second
+        cartList.classList.add('show');
+        setTimeout(function () {
+          cartList.classList.remove('show');
+        }, 1000);
+
+        // Reset form
+        e.currentTarget.reset();
+      }
     });
-  }
-}
-
-/**
- * Processes a form.
- * @param form The form being submitted.
- */
-function processForm(form) {
-
-  /* Get form elements */
-  const action = form.querySelector('input[name="action"]').value;
-  const categoryID = form.querySelector('input[name="categoryID"]').value;
-  const productID = form.querySelector('input[name="productID"]').value;
-
-  /* Create item object */
-  let item = {};
-  item.categoryID = categoryID;
-  item.productID = productID;
-
-  /* Perform action */
-  if (action === 'add') {
-    let options = [];
-    for (let fieldset of form.querySelectorAll('fieldset')) {
-      options.push(fieldset.querySelector('input[name^="O-"]:checked'));
-    }
-
-    for (let option of options) {
-      item[option.name] = option.value;
-    }
-
-    storeItem(item); // store item
-    updateCartList();
-  } else if (action === 'remove') {
-    removeItem(item); // remove item
-    updateCartList();
-  }
-}
-
-/* Update cart before adding the event listener */
-updateCartList();
-
-/* Product forms validation listener */
-document.querySelectorAll('.product-form').forEach(form => {
-  form.addEventListener('submit', e => {
-    let valid = true;
-    valid = validateOptions(form) && valid;
-
-    e.preventDefault();
-
-    if (valid) {
-      processForm(e.currentTarget);
-    }
   });
-});
 
-/* Cart item forms validation listener */
-document.querySelectorAll('.cart-item').forEach(form => {
-  form.addEventListener('submit', handleCartItemForm);
-});
+  /* Cart item forms validation listener */
+  document.querySelectorAll('.cart-item').forEach(form => {
+    form.addEventListener('submit', handleCartItemForm);
+  });
+}, {once: true});
