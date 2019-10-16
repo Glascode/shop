@@ -116,14 +116,14 @@ const data = {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /********************** Handlebars template processing **********************/
+  /*--------------------- Handlebars template processing ---------------------*/
 
   const template = document.querySelector('#template').innerHTML;
   const templateScript = Handlebars.compile(template);
   document.body.innerHTML = templateScript(data);
 
 
-  /**************************** Custom JavaScript *****************************/
+  /*--------------------------- Custom JavaScript ----------------------------*/
 
   /* Cart */
   const cart = document.querySelector('.cart');
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // fallback. cartList.style.top = `${cart.offsetHeight + 1}px`;
 
 
-  /******************* Forms and local storage management *********************/
+  /*------------------- Forms and local storage management -------------------*/
 
   function showMessage(status, text) {
     const message = form.querySelector('.message');
