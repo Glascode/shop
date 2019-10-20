@@ -2,23 +2,28 @@
 
 // Variables
 
-$gray-1: #f0f0f0;
-$gray-2: #eaeaea;
-$gray-3: #ccc;
+$white: #fff;
+$gray-1: #eee;
+$gray-2: #aaa;
+$black: #000;
+
 $accent: #40ea51;
 
-$border-radius: .1rem;
+$border-radius: 0;
+
 
 // Resets
 
 html {
-  font-size: 13px;
+  font-size: 15px;
 }
 
 body {
   margin: 0;
   font-family: Inter, Helvetica Neue, Helvetica, sans-serif;
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 // Typography
@@ -32,15 +37,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  text-transform: uppercase;
 }
 
 h2 {
   font-size: 2rem;
-  font-weight: 700;
 }
 
 h3 {
@@ -65,11 +68,13 @@ p {
 }
 
 a {
-  color: $accent;
+  color: $gray-2;
   text-decoration: none;
+  transition: color .15s;
 
   &:hover {
-    text-decoration: underline;
+    color: currentColor;
+    text-decoration: none;
   }
 }
 

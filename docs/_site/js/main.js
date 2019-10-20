@@ -21,24 +21,6 @@ const data = {
               }
             }
           }
-        },
-        "2": {
-          "productID": "P-9",
-          "productName": "Macarons",
-          "imgUri": "https://imgur.com/O98gAj6.jpg",
-          "price": "4.99",
-          "options": {
-            "1": {
-              "optionID": "O-1",
-              "optionName": "Taste",
-              "attributes": {
-                "A-1": "Lemon",
-                "A-2": "Chocolate",
-                "A-3": "Strawberry",
-                "A-4": "Pistache"
-              }
-            }
-          }
         }
       }
     },
@@ -123,27 +105,9 @@ const data = {
       "products": {
         "1": {
           "productID": "P-5",
-          "productName": "Clock",
-          "imgUri": "https://imgur.com/ZRJ9Rct.jpg",
-          "price": "49.99"
-        },
-        "2": {
-          "productID": "P-6",
           "productName": "Chair",
           "imgUri": "https://imgur.com/yIswGLg.jpg",
           "price": "24.99"
-        },
-        "3": {
-          "productID": "P-7",
-          "productName": "Stool",
-          "imgUri": "https://imgur.com/aPIgpc4.jpg",
-          "price": "39.99"
-        },
-        "4": {
-          "productID": "P-8",
-          "productName": "Square table",
-          "imgUri": "https://imgur.com/jJayAiA.jpg",
-          "price": "99.99"
         }
       }
     }
@@ -240,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
    * @param e The event which has occurred.
    */
   function handleCartItemForm(e) {
-    // e.preventDefault();
+    e.preventDefault();
     processForm(e.currentTarget);
   }
 
@@ -263,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const p = document.createElement('p');
       p.style.textAlign = 'center';
-      p.textContent = 'Your cart is empty';
+      p.textContent = '— Your cart is empty —';
       cartList.append(p);
     } else {
       cartButtonNumber.textContent = cart.length;
@@ -395,14 +359,14 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartList();
 
   /* Product forms validation listener */
-  document.querySelectorAll('.product__form').forEach(form => {
+  document.querySelectorAll('.product-form').forEach(form => {
     form.addEventListener('submit', e => {
       let valid = true;
       valid = validateOptions(form) && valid;
 
-      if (!valid) {
-        e.preventDefault();
-      } else {
+      e.preventDefault();
+
+      if (valid) {
         // Process form
         processForm(e.currentTarget);
 
@@ -410,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cartList.classList.add('show');
         setTimeout(function () {
           cartList.classList.remove('show');
-        }, 1500);
+        }, 1000);
 
         // Reset form
         e.currentTarget.reset();

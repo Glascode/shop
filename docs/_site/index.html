@@ -47,7 +47,8 @@
             </div>
             <div class="cart-item__info_content">
               <div class="cart-item__info_options">
-                <p>M • Black</p>
+                <p>Size: M</p>
+                <p>Color: Black</p>
               </div>
               <button type="submit" class="cart-item__submit-button">Remove</button>
             </div>
@@ -59,23 +60,23 @@
 
   <main>
     {{#each categories}}
-    <section class="category">
-      <h2 class="category__name">{{categoryName}}</h2>
+    <section class="category-section">
+      <h2 class="category-name">{{categoryName}}</h2>
 
-      <section class="products grid columns-12">
+      <section class="products grid columns-6">
         {{#each products}}
-        <article class="product c-3 c-l-4 c-m-6">
-          <img class="product__image" src="{{imgUri}}"
+        <article class="c-2 c-m-3">
+          <img class="product-image" src="{{imgUri}}"
                alt="{{name}}">
-          <h3 class="product__name">{{productName}}</h3>
+          <h3 class="product-name">{{productName}}</h3>
           <p class="product__price">{{price}}</p>
 
-          <form class="product__form">
+          <form class="product-form">
             <input type="hidden" name="action" value="add">
             <input type="hidden" name="categoryID" value="{{../categoryID}}">
             <input type="hidden" name="productID" value="{{productID}}">
             {{#each options}}
-            <fieldset class="product__option">
+            <fieldset class="product-option">
               <legend>{{optionName}}</legend>
               {{#each attributes as |attributeValue attributeID|}}
               <input class="{{../optionName}}" type="radio"

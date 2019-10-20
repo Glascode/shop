@@ -6,21 +6,18 @@ body {
   margin: 0;
   font-family: Inter, Helvetica Neue, Helvetica, sans-serif;
   line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.2;
   color: #111;
 }
 
 h1 {
   font-size: 3rem;
-  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
@@ -50,13 +47,11 @@ p {
 }
 
 a {
-  color: #aaa;
+  color: #40ea51;
   text-decoration: none;
-  transition: color 0.15s;
 }
 a:hover {
-  color: currentColor;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 img {
@@ -97,10 +92,10 @@ header {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   background-color: #fff;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #eaeaea;
 }
 header h1 {
   margin-bottom: 0;
@@ -123,12 +118,12 @@ header h1 {
   font-size: inherit;
   background: none;
   border: 1px dotted transparent;
-  border-radius: 0;
+  border-radius: 0.3rem;
   cursor: pointer;
   outline: 0;
 }
 .cart-button:hover {
-  background-color: #eee;
+  background-color: #f0f0f0;
 }
 .cart-button:focus {
   border-color: #000;
@@ -153,7 +148,7 @@ header h1 {
   padding: 0.8rem;
   background-color: #fff;
   border: 1px solid #000;
-  border-radius: 0;
+  border-radius: 0.3rem;
 }
 .cart-list.show {
   display: block;
@@ -174,13 +169,13 @@ header h1 {
   padding-bottom: 0;
 }
 .cart-item:not(:last-of-type) {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .cart-item__image {
   width: 6rem;
   margin-right: 1rem;
-  border-radius: 0;
+  border-radius: 0.3rem;
 }
 
 .cart-item__info {
@@ -212,11 +207,10 @@ header h1 {
 }
 
 .category__name {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   padding-top: 1rem;
   font-size: 3rem;
   letter-spacing: -0.03em;
-  text-align: center;
 }
 
 .products {
@@ -232,10 +226,6 @@ header h1 {
 .product__name {
   margin-bottom: 0.3rem;
   font-size: 1.25rem;
-}
-
-.product__price {
-  color: #aaa;
 }
 
 footer {
@@ -255,7 +245,7 @@ button[type=button],
 button[type=submit],
 input[type=submit] {
   display: inline-block;
-  padding: 0.3rem 0.6rem;
+  padding: 0.4rem 0.7rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -264,7 +254,7 @@ input[type=submit] {
   color: #fff;
   background-color: #000;
   border: 1px solid transparent;
-  border-radius: 0;
+  border-radius: 0.3rem;
   transition: color 0.15s, background-color 0.15s, border-color 0.15s;
   user-select: none;
   outline: 0;
@@ -272,8 +262,7 @@ input[type=submit] {
 button[type=button]:hover,
 button[type=submit]:hover,
 input[type=submit]:hover {
-  color: #000;
-  background-color: #eee;
+  background-color: #262626;
 }
 button[type=button]:focus, button[type=button]:active,
 button[type=submit]:focus,
@@ -292,7 +281,7 @@ button[type=button].cart-item__submit-button:hover,
 button[type=submit].cart-item__submit-button:hover,
 input[type=submit].cart-item__submit-button:hover {
   color: #000;
-  background-color: #eee;
+  background-color: #eaeaea;
   border-style: solid;
 }
 
@@ -308,20 +297,16 @@ label {
   display: inline-block;
   min-width: 1rem;
   margin-bottom: 0.3rem;
-  padding: 0.3rem 0.5rem;
   text-align: center;
   color: #aaa;
-  border: 1px solid #aaa;
-  border-radius: 0;
-  transition: color 0.15s, border-color 0.15s;
+  transition: color 0.15s;
   cursor: pointer;
 }
 label:hover, input:checked + label {
-  border-color: #000;
+  color: #000;
 }
 input:checked + label {
-  color: #000;
-  border-color: #000;
+  font-weight: 600;
 }
 label:not(:last-of-type) {
   margin-right: 1rem;
