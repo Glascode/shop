@@ -25,7 +25,7 @@ const data = {
         "2": {
           "productID": "P-9",
           "productName": "Macarons",
-          "imgUri": "https://imgur.com/O98gAj6.jpg",
+          "imgUri": "https://imgur.com/jXTjNZZ.jpg",
           "price": "4.99",
           "options": {
             "1": {
@@ -39,6 +39,12 @@ const data = {
               }
             }
           }
+        },
+        "3": {
+          "productID": "P-10",
+          "productName": "Avocado",
+          "imgUri": "https://imgur.com/x1KKtoK.jpg",
+          "price": "-.99"
         }
       }
     },
@@ -240,7 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
    * @param e The event which has occurred.
    */
   function handleCartItemForm(e) {
-    // e.preventDefault();
     processForm(e.currentTarget);
   }
 
@@ -375,23 +380,21 @@ document.addEventListener('DOMContentLoaded', () => {
     /* Perform action */
     if (action === 'add') {
       let options = [];
-      for (let fieldset of form.querySelectorAll('fieldset')) {
+      form.querySelectorAll('fieldset').forEach(fieldset => {
         options.push(fieldset.querySelector('input[name^="O-"]:checked'));
-      }
+      });
 
-      for (let option of options) {
+      options.forEach(option => {
         item[option.name] = option.value;
-      }
+      });
 
       storeItem(item); // store item
-      updateCartList();
     } else if (action === 'remove') {
       removeItem(item); // remove item
-      updateCartList();
     }
   }
 
-  /* Update cart before adding the event listener */
+  /* Update (fill) cart before adding the events listeners */
   updateCartList();
 
   /* Product forms validation listener */
@@ -406,12 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Process form
         processForm(e.currentTarget);
 
-        // Show cart-list for 1 second
-        cartList.classList.add('show');
-        setTimeout(function () {
-          cartList.classList.remove('show');
-        }, 1500);
-
+        // e.preventDefault();
         // Reset form
         e.currentTarget.reset();
       }

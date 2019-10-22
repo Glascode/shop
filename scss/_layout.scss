@@ -138,39 +138,6 @@ header {
   float: right;
 }
 
-// Page
-
-.category:not(:first-of-type) {
-  margin-top: 4rem;
-}
-
-.category__name {
-  margin-bottom: 2rem;
-  padding-top: 1rem;
-  font-size: 3rem;
-  letter-spacing: -.03em;
-  text-align: center;
-}
-
-.products {
-  grid-row-gap: 3rem;
-}
-
-.product__image {
-  object-fit: cover;
-  object-position: center;
-  margin-bottom: .5rem;
-}
-
-.product__name {
-  margin-bottom: .3rem;
-  font-size: 1.25rem;
-}
-
-.product__price {
-  color: $gray-2;
-}
-
 
 // Footer
 
