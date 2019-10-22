@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let options = fieldset.querySelectorAll('input[type="radio"]:checked');
       if (options.length !== 1) {
         form.querySelector('.message').classList.add('error');
-        form.querySelector('.message').textContent = 'Please make sure you selected all of the options.';
+        form.querySelector('.message').textContent = 'Please make sure you selected the right options.';
         return false;
       }
     }
@@ -408,10 +408,6 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         // Process form
         processForm(e.currentTarget);
-
-        // e.preventDefault();
-        // Reset form
-        e.currentTarget.reset();
       }
     });
   });
