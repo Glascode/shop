@@ -1,10 +1,5 @@
 // Layout
 
-header, main, footer {
-  padding-left: 5%;
-  padding-right: 5%;
-}
-
 header {
   position: sticky;
   position: -webkit-sticky;
@@ -13,14 +8,21 @@ header {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  background-color: #fff;
-  border-bottom: 1px solid $gray-1;
+  padding: 1rem 5%;
 
   h1 {
     margin-bottom: 0;
   }
+
+  > *:first-child,
+  > *:last-child {
+    flex-basis: 25%;
+  }
+}
+
+main, footer {
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 
@@ -39,6 +41,7 @@ header {
 .cart-button {
   display: flex;
   align-items: center;
+  margin-left: auto;
   padding: .3rem;
   font-family: inherit;
   font-size: inherit;

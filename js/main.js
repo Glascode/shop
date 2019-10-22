@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* Cart button listener */
-  document.querySelector('.cart-button').addEventListener('click', () => {
+  document.querySelector('.js-cart-button').addEventListener('click', () => {
     cartList.classList.toggle('show');
   });
 
@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartList();
 
   /* Product forms validation listener */
-  document.querySelectorAll('.product__form').forEach(form => {
+  document.querySelectorAll('.js-product-form').forEach(form => {
     form.addEventListener('submit', e => {
       let valid = true;
       valid = validateOptions(form) && valid;
@@ -417,7 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* Cart item forms validation listener */
-  document.querySelectorAll('.cart-item').forEach(form => {
+  document.querySelectorAll('.js-cart-item-form').forEach(form => {
     form.addEventListener('submit', handleCartItemForm);
   });
 }, {once: true});

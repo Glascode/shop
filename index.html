@@ -26,16 +26,16 @@
 <body>
 <script id="template" type="text/x-handlebars-template">
   <header>
-    <h1>Shop</h1>
-
+    <span></span>
+    <a class="logo" href="/shop/"><img src="images/logo.png" alt="Shop"></a>
     <nav class="cart">
-      <button class="cart-button">
+      <button class="cart-button js-cart-button">
         <i class="material-icons-round cart-icon">work_outline</i>
         <span class="cart-button__number">2</span>
       </button>
       <div class="cart-list">
         <!-- cart-item template, will be replaced with JavaScript -->
-        <form class="cart-item">
+        <form class="cart-item js-cart-item-form">
           <input type="hidden" name="action" value="remove">
           <input type="hidden" name="categoryID" value="categoryID">
           <input type="hidden" name="productID" value="productID">
@@ -70,7 +70,7 @@
           <h3 class="product__name">{{productName}}</h3>
           <p class="product__price">{{price}}</p>
 
-          <form class="product__form">
+          <form class="product__form js-product-form">
             <input type="hidden" name="action" value="add">
             <input type="hidden" name="categoryID" value="{{../categoryID}}">
             <input type="hidden" name="productID" value="{{productID}}">
@@ -96,7 +96,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2019 Shop</p>
+    <p>Maël Querré, 2019</p>
     <p><a href="https://github.com/glascode/shop">Source</a></p>
   </footer>
 </script>
