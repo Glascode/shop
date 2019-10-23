@@ -19,7 +19,7 @@ The identification of the items (products) is based on their `productID` only. H
 
 ### HTML
 
-The main page is generated with [Handlebars.js](https://handlebarsjs.com/). The cart list is generated from the `localStorage` cart with vanilla JavaScript. Handlebars didn't allow to get data easily using `productID` with products organised in categories.
+The main page is generated with [Handlebars.js](https://handlebarsjs.com/). The cart list is generated with vanilla JavaScript using the `localStorage`, which the actual items data is retrieved with. With products organised in categories, Handlebars didn't allow to retrieve products data easily using only a `productID`.
 
 ### (S)CSS
 
@@ -47,4 +47,4 @@ Finally, `_main.scss` does nothing but import the 3 files.
 
 #### Naming
 
-The CSS naming method is called BEM.
+The CSS naming method used in the project is called BEM.
