@@ -1,4 +1,6 @@
 // Base
+//
+// Variables and resets
 
 // Variables
 
@@ -24,9 +26,14 @@ html {
 
 body {
   margin: 0;
-  font-family: Inter, Helvetica Neue, Helvetica, sans-serif;
+  font-family: Inter, 'Helvetica Neue', Helvetica, sans-serif;
   line-height: $line-height;
 }
+
+img {
+  width: 100%;
+}
+
 
 // Typography
 
@@ -52,11 +59,8 @@ a {
   }
 }
 
-// Misc
 
-img {
-  width: 100%;
-}
+// Forms
 
 button {
   font-size: 1rem;

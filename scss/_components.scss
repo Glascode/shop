@@ -1,8 +1,7 @@
 // Components
+//
 
-/* Buttons */
-
-// General button style
+// Buttons
 
 .button {
   display: inline-block;
@@ -56,7 +55,6 @@
   font-weight: 500;
 }
 
-// Custom button style
 
 .cart__button {
   display: flex;
@@ -74,7 +72,7 @@
 }
 
 
-/* Form controls */
+// Form controls
 
 .select {
   position: relative;
@@ -106,7 +104,17 @@
 }
 
 
-/* Cart list and items */
+// Cart list and items
+
+.cart {
+  position: relative;
+
+  .cart__list {
+    position: absolute;
+    top: 36px; // fallback
+    right: 0;
+  }
+}
 
 .cart__list {
   display: none;
@@ -177,10 +185,11 @@
   margin-bottom: .3rem;
 }
 
+
 // Page
 
 .category:not(:first-of-type) {
-  margin-top: 4rem;
+  margin-top: 5rem;
 }
 
 .category__name {
@@ -231,7 +240,7 @@
 }
 
 
-/* Logo */
+// Logo
 
 .logo {
   width: 4rem;
@@ -242,9 +251,33 @@
 }
 
 
-/* Misc */
+// Misc
 
 .message {
   margin-bottom: 1rem;
+  font-size: .9rem;
   color: #db3131;
+}
+
+
+// Header
+
+.header {
+  margin-bottom: 2rem;
+  padding: 1rem 5%;
+}
+
+
+// Footer
+
+.footer {
+  margin-top: 3rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  color: $white;
+  background-color: $black;
+}
+
+.footer__text {
+  margin-bottom: 0;
 }

@@ -4,8 +4,12 @@ html {
 
 body {
   margin: 0;
-  font-family: Inter, Helvetica Neue, Helvetica, sans-serif;
+  font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
   line-height: 1.5;
+}
+
+img {
+  width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -27,10 +31,6 @@ a {
 a:hover {
   color: currentColor;
   text-decoration: none;
-}
-
-img {
-  width: 100%;
 }
 
 button {
@@ -81,18 +81,13 @@ button:not(:disabled),
 }
 
 .header {
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2rem;
-  padding: 1rem 5%;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
   z-index: 2;
-}
-.header h1 {
-  margin-bottom: 0;
 }
 .header > *:first-child,
 .header > *:last-child {
@@ -104,29 +99,11 @@ button:not(:disabled),
   padding-right: 10%;
 }
 
-.cart {
-  position: relative;
-}
-.cart .cart__list {
-  position: absolute;
-  top: 36px;
-  right: 0;
-}
-
 .footer {
   display: flex;
   justify-content: space-between;
-  margin-top: 3rem;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-  color: #fff;
-  background-color: #000;
-}
-.footer p {
-  margin-bottom: 0;
 }
 
-/* Buttons */
 .button {
   display: inline-block;
   padding: 0.3rem 0.6rem;
@@ -189,7 +166,6 @@ button:not(:disabled),
   padding: 0.3rem;
 }
 
-/* Form controls */
 .select {
   position: relative;
   width: fit-content;
@@ -217,7 +193,15 @@ button:not(:disabled),
   margin-bottom: 1rem;
 }
 
-/* Cart list and items */
+.cart {
+  position: relative;
+}
+.cart .cart__list {
+  position: absolute;
+  top: 36px;
+  right: 0;
+}
+
 .cart__list {
   display: none;
   width: 25rem;
@@ -283,7 +267,7 @@ button:not(:disabled),
 }
 
 .category:not(:first-of-type) {
-  margin-top: 4rem;
+  margin-top: 5rem;
 }
 
 .category__name {
@@ -337,7 +321,6 @@ button:not(:disabled),
   font-size: 1.2rem;
 }
 
-/* Logo */
 .logo {
   width: 4rem;
 }
@@ -347,10 +330,27 @@ button:not(:disabled),
   }
 }
 
-/* Misc */
 .message {
   margin-bottom: 1rem;
+  font-size: 0.9rem;
   color: #db3131;
+}
+
+.header {
+  margin-bottom: 2rem;
+  padding: 1rem 5%;
+}
+
+.footer {
+  margin-top: 3rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  color: #fff;
+  background-color: #000;
+}
+
+.footer__text {
+  margin-bottom: 0;
 }
 
 /*# sourceMappingURL=main.css.map */

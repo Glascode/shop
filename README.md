@@ -21,7 +21,29 @@ The identification of the items (products) is based on their `productID` only. H
 
 The main page is generated with [Handlebars.js](https://handlebarsjs.com/). The cart is generated 
 
-### CSS
+### (S)CSS
+
+#### Structure
+
+For this small project, a very simple file structure has been chosen.
+
+```
+_base.scss
+_layout.scss
+_components.scss
+
+main.scss
+```
+
+Only 3 separate files are connected to the `main.scss`:
+
+**`_base.scss`:** contains resets, variables and general styles.
+
+**`_layout.scss`:** contains all styles handling the layout.
+
+**`_components.scss`:** contains reusable and other specific components.
+
+Finally, `_main.scss` does nothing but import the 3 files.
 
 #### Naming
 

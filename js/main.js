@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let options = select.querySelectorAll('option:checked:not(:disabled)');
       if (options.length !== 1) {
         form.querySelector('.message').classList.add('error');
-        form.querySelector('.message').textContent = 'Please make sure you selected the right options.';
+        form.querySelector('.message').textContent = "Oops! Please make sure you've selected the right options.";
         return false;
       }
     }
@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * Handles the cart-item form.
+   * Handles the cart item form.
    * @param e The event which has occurred.
    */
   function handleCartItemForm(e) {
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * Updates the whole cart__list with the current localStorage values.
+   * Updates the whole cart list with the current localStorage values.
    * This method allows to show only effectively stored items in the cart.
    */
   function updateCartList() {
