@@ -131,13 +131,33 @@ const data = {
           "productID": "P-5",
           "productName": "Clock",
           "imgUri": "https://imgur.com/ZRJ9Rct.jpg",
-          "price": "49.99"
+          "price": "36.99",
+          "options": {
+            "1": {
+              "optionID": "O-1",
+              "optionName": "Color",
+              "attributes": {
+                "A-1": "Black",
+                "A-2": "White"
+              }
+            }
+          }
         },
         "2": {
           "productID": "P-6",
           "productName": "Chair",
           "imgUri": "https://imgur.com/yIswGLg.jpg",
-          "price": "24.99"
+          "price": "24.99",
+          "options": {
+            "1": {
+              "optionID": "O-1",
+              "optionName": "Color",
+              "attributes": {
+                "A-1": "Black",
+                "A-2": "White"
+              }
+            }
+          }
         },
         "3": {
           "productID": "P-7",
