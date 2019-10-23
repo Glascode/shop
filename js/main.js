@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Cart */
   const cart = document.querySelector('.cart');
-  const cartList = document.querySelector('.cart-list');
+  const cartList = document.querySelector('.cart__list');
 
 
   /* Cart button listener */
@@ -270,19 +270,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * Updates the whole cart-list with the current localStorage values.
+   * Updates the whole cart__list with the current localStorage values.
    * This method allows to show only effectively stored items in the cart.
    */
   function updateCartList() {
     let cart = localStorage.getItem('cart');
     cart = cart ? JSON.parse(cart) : [];
 
-    const cartButtonNumber = document.querySelector('.cart-button__number');
+    const cartButtonNumber = document.querySelector('.js-cart-button-number');
 
-    const cartList = document.querySelector('.cart-list');
-    cartList.innerHTML = ''; // empty cart-list
+    const cartList = document.querySelector('.js-cart-list');
+    cartList.innerHTML = ''; // empty cart__list
 
-    // Add items to cart-list
+    // Add items to cart__list
     if (cart === undefined || cart.length === 0) {
       cartButtonNumber.textContent = 0;
 
@@ -370,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cartItemSubmitButton = document.createElement('button');
         cartItemSubmitButton.type = 'submit';
         cartItemSubmitButton.classList.add('cart-item__submit-button');
-        cartItemSubmitButton.textContent = '×';
+        cartItemSubmitButton.innerHTML = '<i class="material-icons-sharp">close</i>';
         cartItemSubmitButton.title = 'Remove item';
 
         cartItemInfoHeader.append(titleElement, priceElement);

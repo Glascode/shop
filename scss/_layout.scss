@@ -9,6 +9,7 @@ header {
   justify-content: space-between;
   margin-bottom: 2rem;
   padding: 1rem 5%;
+  z-index: 2;
 
   h1 {
     margin-bottom: 0;
@@ -31,7 +32,7 @@ main, footer {
 .cart {
   position: relative;
 
-  .cart-list {
+  .cart__list {
     position: absolute;
     top: 36px; // fallback
     right: 0;

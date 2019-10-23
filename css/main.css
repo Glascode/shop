@@ -91,6 +91,7 @@ header {
   justify-content: space-between;
   margin-bottom: 2rem;
   padding: 1rem 5%;
+  z-index: 2;
 }
 header h1 {
   margin-bottom: 0;
@@ -108,7 +109,7 @@ main, footer {
 .cart {
   position: relative;
 }
-.cart .cart-list {
+.cart .cart__list {
   position: absolute;
   top: 36px;
   right: 0;
@@ -177,7 +178,7 @@ input[type=submit].cart-item__submit-button:hover {
   border-style: solid;
 }
 
-.cart-button {
+.cart__button {
   display: flex;
   align-items: center;
   margin-left: auto;
@@ -190,23 +191,23 @@ input[type=submit].cart-item__submit-button:hover {
   cursor: pointer;
   outline: 0;
 }
-.cart-button:hover {
+.cart__button:hover {
   background-color: #eee;
 }
-.cart-button:focus {
+.cart__button:focus {
   border-color: #000;
 }
 
-.cart-button__icon {
+.cart__button_icon {
   margin-right: 0.3rem;
 }
 
-.cart-button__number {
+.cart__button_number {
   margin-left: 0.5rem;
   font-weight: 500;
 }
 
-.cart-list {
+.cart__list {
   display: none;
   width: 25rem;
   max-width: 80vw;
@@ -217,11 +218,12 @@ input[type=submit].cart-item__submit-button:hover {
   background-color: #fff;
   border: 1px solid #000;
   border-radius: 0;
+  overscroll-behavior: contain;
 }
-.cart-list.show {
+.cart__list.show {
   display: block;
 }
-.cart-list > p {
+.cart__list > p {
   margin-bottom: 0;
 }
 
@@ -268,11 +270,20 @@ input[type=submit].cart-item__submit-button:hover {
 
 .cart-item__submit-button {
   float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3rem;
+}
+.cart-item__submit-button i {
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .select-wrapper {
   position: relative;
   width: fit-content;
+  z-index: 1;
 }
 .select-wrapper::after {
   content: "+";
@@ -284,6 +295,7 @@ input[type=submit].cart-item__submit-button:hover {
 }
 
 .product__option {
+  position: relative;
   display: block;
   margin-bottom: 1rem;
   padding: 0.3rem 1.5rem 0.3rem 0;
