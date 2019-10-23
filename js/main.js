@@ -14,7 +14,7 @@ const data = {
           "options": {
             "1": {
               "optionID": "O-1",
-              "optionName": "Taste",
+              "optionName": "Flavour",
               "attributes": {
                 "A-1": "Chocolate",
                 "A-2": "Strawberry"
@@ -30,12 +30,11 @@ const data = {
           "options": {
             "1": {
               "optionID": "O-1",
-              "optionName": "Taste",
+              "optionName": "Flavour",
               "attributes": {
-                "A-1": "Lemon",
-                "A-2": "Chocolate",
-                "A-3": "Strawberry",
-                "A-4": "Pistache"
+                "A-1": "Chocolate",
+                "A-2": "Strawberry",
+                "A-3": "Vanilla"
               }
             }
           }
@@ -69,7 +68,7 @@ const data = {
             },
             "2": {
               "optionID": "O-2",
-              "optionName": "Color",
+              "optionName": "Colour",
               "attributes": {
                 "A-1": "Black",
                 "A-2": "Red",
@@ -95,7 +94,7 @@ const data = {
             },
             "2": {
               "optionID": "O-2",
-              "optionName": "Color",
+              "optionName": "Colour",
               "attributes": {
                 "A-1": "Black",
                 "A-2": "Blue",
@@ -135,7 +134,7 @@ const data = {
           "options": {
             "1": {
               "optionID": "O-1",
-              "optionName": "Color",
+              "optionName": "Colour",
               "attributes": {
                 "A-1": "Black",
                 "A-2": "White"
@@ -151,7 +150,7 @@ const data = {
           "options": {
             "1": {
               "optionID": "O-1",
-              "optionName": "Color",
+              "optionName": "Colour",
               "attributes": {
                 "A-1": "Black",
                 "A-2": "White"
@@ -311,11 +310,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const cartItemInfo = document.createElement('div');
         cartItemInfo.classList.add('item__info');
 
-        const cartItemInfoHeader = document.createElement('div');
-        cartItemInfoHeader.classList.add('item__info_header');
+        const cartItemHeader = document.createElement('div');
+        cartItemHeader.classList.add('item__header');
 
-        const cartItemInfoContent = document.createElement('div');
-        cartItemInfoContent.classList.add('item__info_content');
+        const cartItemContent = document.createElement('div');
+        cartItemContent.classList.add('item__content');
 
         // Retrieve the category in data corresponding to the item.categoryID
         let category = Object.values(data.categories).find(element => {
@@ -344,15 +343,17 @@ document.addEventListener('DOMContentLoaded', () => {
         cartItemImage.alt = product.productName;
 
         // Info header
-        let titleElement = document.createElement('h4');
-        titleElement.textContent = product.productName;
+        let nameElement = document.createElement('h4');
+        nameElement.classList.add('item__name');
+        nameElement.textContent = product.productName;
         let priceElement = document.createElement('p');
+        priceElement.classList.add('price', 'item__price');
         priceElement.textContent = product.price;
 
         // Info options
         if (product.options) {
           const cartItemInfoOptions = document.createElement('div');
-          cartItemInfoOptions.classList.add('item__info_options');
+          cartItemInfoOptions.classList.add('item__options');
 
           Object.values(product.options).forEach(option => {
             let attributeID = Object.keys(option.attributes).find(key => {
@@ -360,21 +361,22 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             let optionElement = document.createElement('p');
+            optionElement.classList.add('item__option');
             optionElement.textContent = `${option.optionName}: ${option.attributes[attributeID]}`;
             cartItemInfoOptions.append(optionElement);
           });
 
-          cartItemInfoContent.append(cartItemInfoOptions);
+          cartItemContent.append(cartItemInfoOptions);
         }
 
         const cartItemSubmitButton = document.createElement('button');
         cartItemSubmitButton.type = 'submit';
         cartItemSubmitButton.classList.add('button', 'item__button');
-        cartItemSubmitButton.innerHTML = '<i class="material-icons-sharp button__icon button__icon_sm">close</i>';
+        cartItemSubmitButton.innerHTML = '<i class="material-icons-sharp button__icon button__icon_s">close</i>';
         cartItemSubmitButton.title = 'Remove item';
 
-        cartItemInfoHeader.append(titleElement, priceElement);
-        cartItemInfo.append(cartItemInfoHeader, cartItemInfoContent);
+        cartItemHeader.append(nameElement, priceElement);
+        cartItemInfo.append(cartItemHeader, cartItemContent);
         cartItem.append(cartItemImage, cartItemInfo, cartItemSubmitButton);
         cartList.append(cartItem);
       });
