@@ -29,28 +29,30 @@
     <span></span>
     <a class="logo" href="/shop/"><img src="images/logo.png" alt="Shop"></a>
     <nav class="cart">
-      <button class="cart__button js-cart-button">
+      <button class="button cart__button js-cart-button">
         <i class="material-icons-sharp cart__icon">work_outline</i>
         <span class="cart__button_number js-cart-button-number">2</span>
       </button>
       <div class="cart__list js-cart-list">
-        <!-- cart-item template, will be replaced with JavaScript -->
-        <form class="cart-item js-cart-item-form">
+        <!-- item template, replaced with JavaScript -->
+        <form class="item js-cart-item-form">
           <input type="hidden" name="action" value="remove">
           <input type="hidden" name="categoryID" value="categoryID">
           <input type="hidden" name="productID" value="productID">
-          <img class="cart-item__image" src="https://imgur.com/9uqCna7.jpg" alt="Jumper">
-          <div class="cart-item__info">
-            <div class="cart-item__info_header">
+          <img class="item__image" src="https://imgur.com/9uqCna7.jpg" alt="Jumper">
+          <div class="item__info">
+            <div class="item__info_header">
               <h4>Jumper</h4>
               <p>29.99</p>
             </div>
-            <div class="cart-item__info_content">
-              <div class="cart-item__info_options">
+            <div class="item__info_content">
+              <div class="item__info_options">
                 <p>M • Black</p>
               </div>
-              <button type="submit" class="cart-item__submit-button">Remove</button>
             </div>
+            <button class="button item__button" type="submit">
+              <i class="material-icons-sharp button__icon">close</i>
+            </button>
           </div>
         </form>
       </div>
@@ -87,7 +89,7 @@
             </div>
             {{/each}}
             <div class="message"></div>
-            <button type="submit">Add to cart</button>
+            <button class="button button--black" type="submit">Add to cart</button>
           </form>
         </article>
         {{/each}}

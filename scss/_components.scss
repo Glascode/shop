@@ -10,8 +10,7 @@
 
 // Buttons
 
-button[type="submit"],
-input[type="submit"] {
+.button {
   display: inline-block;
   padding: .3rem .6rem;
   font-size: 1rem;
@@ -20,61 +19,71 @@ input[type="submit"] {
   line-height: $line-height;
   text-align: center;
   vertical-align: middle;
-  color: #fff;
-  background-color: #000;
+  color: $black;
+  background-color: transparent;
   border: 1px solid transparent;
   border-radius: $border-radius;
-  transition: color .15s, background-color .15s, border-color .15s;
   user-select: none;
   outline: 0;
 
   &:hover {
-    color: $black;
     background-color: $gray-1;
   }
 
   &:focus,
   &:active {
-    box-shadow: 0 0 0 2px rgba($black, .5);
-  }
-
-  &.cart-item__submit-button {
-    align-self: center;
-    color: $black;
-    background-color: transparent;
-
-    &:hover {
-      color: $black;
-      background-color: $gray-1;
-      border-style: solid;
-    }
+    border-style: dotted;
+    border-color: $black;
   }
 }
 
+.button--black {
+  color: $white;
+  background-color: $black;
 
-// Cart
+  &:hover {
+    color: $black;
+    background-color: $gray-2;
+  }
+}
+
+.button--gray {
+  color: $black;
+  background-color: transparent;
+
+  &:hover {
+    color: $black;
+    background-color: $gray-1;
+    border-style: solid;
+  }
+}
 
 .cart__button {
   display: flex;
   align-items: center;
   margin-left: auto;
   padding: .3rem;
-  font-family: inherit;
-  font-size: inherit;
-  background: none;
-  border: 1px dotted transparent;
-  border-radius: $border-radius;
-  cursor: pointer;
-  outline: 0;
+}
+
+.item__button {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .3rem;
 
   &:hover {
+    color: $black;
     background-color: $gray-1;
-  }
-
-  &:focus {
-    border-color: #000;
+    border-style: solid;
   }
 }
+
+.button__icon {
+  font-size: inherit;
+}
+
+// Cart
 
 .cart__button_icon {
   margin-right: .3rem;
@@ -107,7 +116,7 @@ input[type="submit"] {
   }
 }
 
-.cart-item {
+.item {
   display: flex;
   align-items: flex-start;
   padding: .8rem 0;
@@ -125,13 +134,13 @@ input[type="submit"] {
   }
 }
 
-.cart-item__image {
+.item__image {
   width: 6rem;
   margin-right: 1rem;
   border-radius: $border-radius;
 }
 
-.cart-item__info {
+.item__info {
   flex-grow: 1;
 
   p {
@@ -139,7 +148,7 @@ input[type="submit"] {
   }
 }
 
-.cart-item__info_header {
+.item__info_header {
   display: flex;
   margin-bottom: .5rem;
 
@@ -151,19 +160,6 @@ input[type="submit"] {
   p {
     margin-left: .8rem;
     margin-bottom: 0;
-  }
-}
-
-.cart-item__submit-button {
-  float: right;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: .3rem;
-
-  i {
-    font-size: inherit;
-    line-height: inherit;
   }
 }
 

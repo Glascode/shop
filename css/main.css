@@ -61,6 +61,11 @@ img {
   width: 100%;
 }
 
+button {
+  background-color: transparent;
+  border: 0;
+}
+
 fieldset {
   min-width: 0;
   padding: 0;
@@ -137,8 +142,7 @@ footer p {
   }
 }
 
-button[type=submit],
-input[type=submit] {
+.button {
   display: inline-block;
   padding: 0.3rem 0.6rem;
   font-size: 1rem;
@@ -147,32 +151,35 @@ input[type=submit] {
   line-height: 1.5;
   text-align: center;
   vertical-align: middle;
-  color: #fff;
-  background-color: #000;
+  color: #000;
+  background-color: transparent;
   border: 1px solid transparent;
   border-radius: 0;
-  transition: color 0.15s, background-color 0.15s, border-color 0.15s;
   user-select: none;
   outline: 0;
 }
-button[type=submit]:hover,
-input[type=submit]:hover {
-  color: #000;
+.button:hover {
   background-color: #eee;
 }
-button[type=submit]:focus, button[type=submit]:active,
-input[type=submit]:focus,
-input[type=submit]:active {
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+.button:focus, .button:active {
+  border-style: dotted;
+  border-color: #000;
 }
-button[type=submit].cart-item__submit-button,
-input[type=submit].cart-item__submit-button {
-  align-self: center;
+
+.button--black {
+  color: #fff;
+  background-color: #000;
+}
+.button--black:hover {
+  color: #000;
+  background-color: #aaa;
+}
+
+.button--gray {
   color: #000;
   background-color: transparent;
 }
-button[type=submit].cart-item__submit-button:hover,
-input[type=submit].cart-item__submit-button:hover {
+.button--gray:hover {
   color: #000;
   background-color: #eee;
   border-style: solid;
@@ -183,19 +190,23 @@ input[type=submit].cart-item__submit-button:hover {
   align-items: center;
   margin-left: auto;
   padding: 0.3rem;
-  font-family: inherit;
-  font-size: inherit;
-  background: none;
-  border: 1px dotted transparent;
-  border-radius: 0;
-  cursor: pointer;
-  outline: 0;
 }
-.cart__button:hover {
+
+.item__button {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3rem;
+}
+.item__button:hover {
+  color: #000;
   background-color: #eee;
+  border-style: solid;
 }
-.cart__button:focus {
-  border-color: #000;
+
+.button__icon {
+  font-size: inherit;
 }
 
 .cart__button_icon {
@@ -227,57 +238,45 @@ input[type=submit].cart-item__submit-button:hover {
   margin-bottom: 0;
 }
 
-.cart-item {
+.item {
   display: flex;
   align-items: flex-start;
   padding: 0.8rem 0;
 }
-.cart-item:first-of-type {
+.item:first-of-type {
   padding-top: 0;
 }
-.cart-item:last-of-type {
+.item:last-of-type {
   padding-bottom: 0;
 }
-.cart-item:not(:last-of-type) {
+.item:not(:last-of-type) {
   border-bottom: 1px solid #eee;
 }
 
-.cart-item__image {
+.item__image {
   width: 6rem;
   margin-right: 1rem;
   border-radius: 0;
 }
 
-.cart-item__info {
+.item__info {
   flex-grow: 1;
 }
-.cart-item__info p {
+.item__info p {
   margin-bottom: 0.3rem;
 }
 
-.cart-item__info_header {
+.item__info_header {
   display: flex;
   margin-bottom: 0.5rem;
 }
-.cart-item__info_header h4 {
+.item__info_header h4 {
   margin-bottom: 0;
   font-size: 1.2rem;
 }
-.cart-item__info_header p {
+.item__info_header p {
   margin-left: 0.8rem;
   margin-bottom: 0;
-}
-
-.cart-item__submit-button {
-  float: right;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.3rem;
-}
-.cart-item__submit-button i {
-  font-size: inherit;
-  line-height: inherit;
 }
 
 .select-wrapper {

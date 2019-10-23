@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Init cart-item form element
         const cartItem = document.createElement('form');
         cartItem.addEventListener('submit', handleCartItemForm);
-        cartItem.classList.add('cart-item');
+        cartItem.classList.add('item');
         const actionInput = document.createElement('input');
         actionInput.type = 'hidden';
         actionInput.name = 'action';
@@ -306,16 +306,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Create cart item DOM elements
         const cartItemImage = document.createElement('img');
-        cartItemImage.classList.add('cart-item__image');
+        cartItemImage.classList.add('item__image');
 
         const cartItemInfo = document.createElement('div');
-        cartItemInfo.classList.add('cart-item__info');
+        cartItemInfo.classList.add('item__info');
 
         const cartItemInfoHeader = document.createElement('div');
-        cartItemInfoHeader.classList.add('cart-item__info_header');
+        cartItemInfoHeader.classList.add('item__info_header');
 
         const cartItemInfoContent = document.createElement('div');
-        cartItemInfoContent.classList.add('cart-item__info_content');
+        cartItemInfoContent.classList.add('item__info_content');
 
         // Retrieve the category in data corresponding to the item.categoryID
         let category = Object.values(data.categories).find(element => {
@@ -352,9 +352,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Info options
         if (product.options) {
           const cartItemInfoOptions = document.createElement('div');
-          cartItemInfoOptions.classList.add('cart-item__info_options');
+          cartItemInfoOptions.classList.add('item__info_options');
 
-          for (let option of Object.values(product.options)) {
+          Object.values(product.options).forEach(option => {
             let attributeID = Object.keys(option.attributes).find(key => {
               return key === item[option.optionID];
             });
@@ -362,15 +362,15 @@ document.addEventListener('DOMContentLoaded', () => {
             let optionElement = document.createElement('p');
             optionElement.textContent = `${option.optionName}: ${option.attributes[attributeID]}`;
             cartItemInfoOptions.append(optionElement);
-          }
+          });
 
           cartItemInfoContent.append(cartItemInfoOptions);
         }
 
         const cartItemSubmitButton = document.createElement('button');
         cartItemSubmitButton.type = 'submit';
-        cartItemSubmitButton.classList.add('cart-item__submit-button');
-        cartItemSubmitButton.innerHTML = '<i class="material-icons-sharp">close</i>';
+        cartItemSubmitButton.classList.add('button', 'item__button');
+        cartItemSubmitButton.innerHTML = '<i class="material-icons-sharp button__icon">close</i>';
         cartItemSubmitButton.title = 'Remove item';
 
         cartItemInfoHeader.append(titleElement, priceElement);

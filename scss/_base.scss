@@ -16,7 +16,7 @@ $m-bp: 767px;
 $line-height: 1.5;
 
 
-// Resets
+// General
 
 html {
   font-size: 15px;
@@ -84,6 +84,11 @@ a {
 
 img {
   width: 100%;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
 }
 
 fieldset {
