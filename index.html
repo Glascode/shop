@@ -25,13 +25,13 @@
 
 <body>
 <script id="template" type="text/x-handlebars-template">
-  <header>
+  <header class="header">
     <span></span>
     <a class="logo" href="/shop/"><img src="images/logo.png" alt="Shop"></a>
     <nav class="cart">
       <button class="button cart__button js-cart-button">
-        <i class="material-icons-sharp cart__icon">work_outline</i>
-        <span class="cart__button_number js-cart-button-number">2</span>
+        <i class="material-icons-sharp button__icon">work_outline</i>
+        <span class="button__text js-cart-button-number">2</span>
       </button>
       <div class="cart__list js-cart-list">
         <!-- item template, replaced with JavaScript -->
@@ -51,7 +51,7 @@
               </div>
             </div>
             <button class="button item__button" type="submit">
-              <i class="material-icons-sharp button__icon">close</i>
+              <i class="material-icons-sharp button__icon button__icon_sm">close</i>
             </button>
           </div>
         </form>
@@ -59,7 +59,7 @@
     </nav>
   </header>
 
-  <main>
+  <main class="main">
     {{#each categories}}
     <section class="category">
       <h2 class="category__name">{{categoryName}}</h2>
@@ -77,8 +77,8 @@
             <input type="hidden" name="categoryID" value="{{../categoryID}}">
             <input type="hidden" name="productID" value="{{productID}}">
             {{#each options}}
-            <div class="select-wrapper">
-              <select class="product__option" name="{{optionID}}" id="{{../../categoryID}}_{{../productID}}_{{optionID}}">
+            <div class="select product__select">
+              <select name="{{optionID}}" id="{{../../categoryID}}_{{../productID}}_{{optionID}}">
                 <option selected disabled>{{optionName}}</option>
                 {{#each attributes as |attributeValue attributeID|}}
                 <option value="{{attributeID}}"
@@ -98,7 +98,7 @@
     {{/each}}
   </main>
 
-  <footer>
+  <footer class="footer">
     <p>Maël Querré, 2019</p>
     <p><a href="https://github.com/glascode/shop">Source</a></p>
   </footer>

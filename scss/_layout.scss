@@ -1,6 +1,6 @@
 // Layout
 
-header {
+.header {
   position: sticky;
   position: -webkit-sticky;
   top: 0;
@@ -21,7 +21,7 @@ header {
   }
 }
 
-main, footer {
+.main, .footer {
   padding-left: 10%;
   padding-right: 10%;
 }
@@ -42,7 +42,7 @@ main, footer {
 
 // Footer
 
-footer {
+.footer {
   display: flex;
   justify-content: space-between;
   margin-top: 3rem;

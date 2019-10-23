@@ -370,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cartItemSubmitButton = document.createElement('button');
         cartItemSubmitButton.type = 'submit';
         cartItemSubmitButton.classList.add('button', 'item__button');
-        cartItemSubmitButton.innerHTML = '<i class="material-icons-sharp button__icon">close</i>';
+        cartItemSubmitButton.innerHTML = '<i class="material-icons-sharp button__icon button__icon_sm">close</i>';
         cartItemSubmitButton.title = 'Remove item';
 
         cartItemInfoHeader.append(titleElement, priceElement);
@@ -431,5 +431,10 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Cart item forms validation listener */
   document.querySelectorAll('.js-cart-item-form').forEach(form => {
     form.addEventListener('submit', handleCartItemForm);
+  });
+
+  /* Hide cart-list when clicking in the .main element */
+  document.querySelector('.main').addEventListener('click', e => {
+    document.querySelector('.js-cart-list').classList.remove('show');
   });
 }, {once: true});
