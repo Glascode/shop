@@ -71,8 +71,8 @@ const data = {
               "optionID": "O-2",
               "optionName": "Color",
               "attributes": {
-                "A-1": "Red",
-                "A-2": "Pink",
+                "A-1": "Black",
+                "A-2": "Red",
                 "A-3": "Green"
               }
             }
@@ -97,8 +97,8 @@ const data = {
               "optionID": "O-2",
               "optionName": "Color",
               "attributes": {
-                "A-1": "Red",
-                "A-2": "Pink",
+                "A-1": "Black",
+                "A-2": "Blue",
                 "A-3": "Green"
               }
             }
@@ -198,8 +198,8 @@ document.addEventListener('DOMContentLoaded', () => {
    *   otherwise.
    */
   function validateOptions(form) {
-    for (let fieldset of form.querySelectorAll('fieldset')) {
-      let options = fieldset.querySelectorAll('input[type="radio"]:checked');
+    for (let select of form.querySelectorAll('select')) {
+      let options = select.querySelectorAll('option:checked:not(:disabled)');
       if (options.length !== 1) {
         form.querySelector('.message').classList.add('error');
         form.querySelector('.message').textContent = 'Please make sure you selected the right options.';
@@ -354,9 +354,8 @@ document.addEventListener('DOMContentLoaded', () => {
         cartItemSubmitButton.title = 'Remove item';
 
         cartItemInfoHeader.append(titleElement, priceElement);
-        cartItemInfoContent.append(cartItemSubmitButton);
         cartItemInfo.append(cartItemInfoHeader, cartItemInfoContent);
-        cartItem.append(cartItemImage, cartItemInfo);
+        cartItem.append(cartItemImage, cartItemInfo, cartItemSubmitButton);
         cartList.append(cartItem);
       });
     }
@@ -380,13 +379,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* Perform action */
     if (action === 'add') {
-      let options = [];
-      form.querySelectorAll('fieldset').forEach(fieldset => {
-        options.push(fieldset.querySelector('input[name^="O-"]:checked'));
-      });
-
-      options.forEach(option => {
-        item[option.name] = option.value;
+      form.querySelectorAll('select').forEach(select => {
+        const option = select.querySelector('option:checked');
+        item[select.name] = option.value;
       });
 
       storeItem(item); // store item

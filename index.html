@@ -75,15 +75,16 @@
             <input type="hidden" name="categoryID" value="{{../categoryID}}">
             <input type="hidden" name="productID" value="{{productID}}">
             {{#each options}}
-            <fieldset class="product__option">
-              <legend>{{optionName}}</legend>
-              {{#each attributes as |attributeValue attributeID|}}
-              <input class="{{../optionName}}" type="radio"
-                     name="{{../optionID}}" value="{{attributeID}}"
-                     id="{{../../../categoryID}}_{{../../productID}}_{{../optionID}}_{{attributeID}}">
-              <label for="{{../../../categoryID}}_{{../../productID}}_{{../optionID}}_{{attributeID}}">{{attributeValue}}</label>
-              {{/each}}
-            </fieldset>
+            <div class="select-wrapper">
+              <select class="product__option" name="{{optionID}}" id="{{../../categoryID}}_{{../productID}}_{{optionID}}">
+                <option selected disabled>{{optionName}}</option>
+                {{#each attributes as |attributeValue attributeID|}}
+                <option value="{{attributeID}}"
+                        id="{{../../../categoryID}}_{{../../productID}}_{{../optionID}}_{{attributeID}}">{{attributeValue}}
+                </option>
+                {{/each}}
+              </select>
+            </div>
             {{/each}}
             <div class="message"></div>
             <button type="submit">Add to cart</button>

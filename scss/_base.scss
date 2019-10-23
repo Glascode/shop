@@ -13,6 +13,8 @@ $border-radius: 0;
 $l-bp: 991px;
 $m-bp: 767px;
 
+$line-height: 1.5;
+
 
 // Resets
 
@@ -23,7 +25,7 @@ html {
 body {
   margin: 0;
   font-family: Inter, Helvetica Neue, Helvetica, sans-serif;
-  line-height: 1.5;
+  line-height: $line-height;
 }
 
 // Typography
@@ -82,10 +84,6 @@ a {
 
 img {
   width: 100%;
-}
-
-button {
-  font-family: inherit;
 }
 
 fieldset {

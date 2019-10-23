@@ -61,10 +61,6 @@ img {
   width: 100%;
 }
 
-button {
-  font-family: inherit;
-}
-
 fieldset {
   min-width: 0;
   padding: 0;
@@ -233,13 +229,13 @@ footer p {
   }
 }
 
-button[type=button],
 button[type=submit],
 input[type=submit] {
   display: inline-block;
   padding: 0.3rem 0.6rem;
   font-size: 1rem;
   font-weight: 400;
+  font-family: inherit;
   line-height: 1.5;
   text-align: center;
   vertical-align: middle;
@@ -251,26 +247,22 @@ input[type=submit] {
   user-select: none;
   outline: 0;
 }
-button[type=button]:hover,
 button[type=submit]:hover,
 input[type=submit]:hover {
   color: #000;
   background-color: #eee;
 }
-button[type=button]:focus, button[type=button]:active,
-button[type=submit]:focus,
-button[type=submit]:active,
+button[type=submit]:focus, button[type=submit]:active,
 input[type=submit]:focus,
 input[type=submit]:active {
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
 }
-button[type=button].cart-item__submit-button,
 button[type=submit].cart-item__submit-button,
 input[type=submit].cart-item__submit-button {
+  align-self: center;
   color: #000;
   background-color: transparent;
 }
-button[type=button].cart-item__submit-button:hover,
 button[type=submit].cart-item__submit-button:hover,
 input[type=submit].cart-item__submit-button:hover {
   color: #000;
@@ -278,35 +270,41 @@ input[type=submit].cart-item__submit-button:hover {
   border-style: solid;
 }
 
-input[type=radio] {
+.select-wrapper {
+  position: relative;
+  width: fit-content;
+}
+.select-wrapper::after {
+  content: "+";
   position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-  cursor: pointer;
+  right: 0;
+  bottom: 50%;
+  transform: translateY(50%);
+  pointer-events: none;
 }
 
-label {
-  display: inline-block;
-  min-width: 1rem;
-  margin-bottom: 0.3rem;
-  padding: 0.3rem 0.5rem;
-  text-align: center;
-  color: #aaa;
-  border: 1px solid #aaa;
-  border-radius: 0;
-  transition: color 0.15s, border-color 0.15s;
-  cursor: pointer;
-}
-label:hover, input:checked + label {
-  border-color: #000;
-}
-input:checked + label {
+.product__option {
+  display: block;
+  margin-bottom: 1rem;
+  padding: 0.3rem 1.5rem 0.3rem 0;
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: inherit;
+  line-height: 1.5;
   color: #000;
-  border-color: #000;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-bottom-color: #000;
+  border-radius: 0;
+  outline: 0;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
 }
-label:not(:last-of-type) {
-  margin-right: 1rem;
+.product__option:focus, .product__option:active {
+  border-top: 1px dotted #000;
+  border-left: 1px dotted #000;
+  border-right: 1px dotted #000;
 }
 
 .category:not(:first-of-type) {
