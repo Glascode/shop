@@ -6,10 +6,12 @@ $white: #fff;
 $gray-1: #eee;
 $gray-2: #aaa;
 $black: #000;
-
 $accent: #40ea51;
 
 $border-radius: 0;
+
+$l-bp: 991px;
+$m-bp: 767px;
 
 
 // Resets
@@ -80,6 +82,10 @@ a {
 
 img {
   width: 100%;
+}
+
+button {
+  font-family: inherit;
 }
 
 fieldset {

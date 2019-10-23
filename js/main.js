@@ -350,7 +350,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const cartItemSubmitButton = document.createElement('button');
         cartItemSubmitButton.type = 'submit';
         cartItemSubmitButton.classList.add('cart-item__submit-button');
-        cartItemSubmitButton.textContent = 'Remove';
+        cartItemSubmitButton.textContent = '×';
+        cartItemSubmitButton.title = 'Remove item';
 
         cartItemInfoHeader.append(titleElement, priceElement);
         cartItemInfoContent.append(cartItemSubmitButton);
