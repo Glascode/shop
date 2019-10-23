@@ -43,7 +43,7 @@ Only 3 separate files are connected to the `main.scss`:
 
 **`_components.scss`:** contains reusable and other specific components.
 
-Finally, `_main.scss` does nothing but import the 3 files.
+Finally, **`main.scss`** does nothing but import the 3 files.
 
 #### Naming
 
