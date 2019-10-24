@@ -34,7 +34,7 @@
         <span class="button__text js-cart-button-number">2</span>
       </button>
       <div class="cart__list js-cart-list">
-        <!-- item template, replaced with JavaScript -->
+        <!-- for each item in cart -->
         <form class="item js-cart-item-form">
           <input type="hidden" name="action" value="remove">
           <input type="hidden" name="categoryID" value="categoryID">
@@ -55,6 +55,11 @@
             </button>
           </div>
         </form>
+        <!-- end for each -->
+        <div class="item cart__footer">
+          <p>Total: </p>
+          <button class="button">Checkout</button>
+        </div>
       </div>
     </nav>
   </header>

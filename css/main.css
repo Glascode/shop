@@ -129,7 +129,7 @@ button:not(:disabled),
 }
 .button--black:hover {
   color: #000;
-  background-color: #aaa;
+  background-color: #eee;
 }
 
 .button--gray {
@@ -217,8 +217,13 @@ button:not(:disabled),
 .cart__list.show {
   display: block;
 }
-.cart__list > p {
+
+.cart__text {
   margin-bottom: 0;
+}
+
+.cart__message {
+  text-align: center;
 }
 
 .item {
@@ -226,14 +231,19 @@ button:not(:disabled),
   align-items: flex-start;
   padding: 0.8rem 0;
 }
-.item:first-of-type {
+.item:first-child {
   padding-top: 0;
 }
-.item:last-of-type {
+.item:last-child {
   padding-bottom: 0;
 }
-.item:not(:last-of-type) {
+.item:not(:last-child) {
   border-bottom: 1px solid #eee;
+}
+
+.cart__footer {
+  align-items: center;
+  justify-content: space-between;
 }
 
 .item__image {

@@ -32,7 +32,7 @@
 
   &:hover {
     color: $black;
-    background-color: $gray-2;
+    background-color: $gray-1;
   }
 }
 
@@ -132,10 +132,14 @@
   &.show {
     display: block;
   }
+}
 
-  > p {
-    margin-bottom: 0;
-  }
+.cart__text {
+  margin-bottom: 0;
+}
+
+.cart__message {
+  text-align: center;
 }
 
 .item {
@@ -143,17 +147,22 @@
   align-items: flex-start;
   padding: .8rem 0;
 
-  &:first-of-type {
+  &:first-child {
     padding-top: 0;
   }
 
-  &:last-of-type {
+  &:last-child {
     padding-bottom: 0;
   }
 
-  &:not(:last-of-type) {
+  &:not(:last-child) {
     border-bottom: 1px solid $gray-1;
   }
+}
+
+.cart__footer {
+  align-items: center;
+  justify-content: space-between;
 }
 
 .item__image {

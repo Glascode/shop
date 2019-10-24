@@ -285,12 +285,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cart === undefined || cart.length === 0) {
       cartButtonNumber.textContent = 0;
 
-      const p = document.createElement('p');
-      p.style.textAlign = 'center';
-      p.textContent = 'Your cart is empty';
-      cartList.append(p);
+      const messageEmpty = document.createElement('p');
+      messageEmpty.classList.add('cart__text', 'cart__message');
+      messageEmpty.textContent = 'Your cart is empty';
+      cartList.append(messageEmpty);
     } else {
       cartButtonNumber.textContent = cart.length;
+
+      let total = 0;
 
       cart.forEach(item => {
         // Init cart-item form element
@@ -331,6 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
         categoryIDInput.type = 'hidden';
         categoryIDInput.name = 'categoryID';
         categoryIDInput.value = category.categoryID;
+
         const productIDInput = document.createElement('input');
         productIDInput.type = 'hidden';
         productIDInput.name = 'productID';
@@ -349,6 +352,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let priceElement = document.createElement('p');
         priceElement.classList.add('price', 'item__price');
         priceElement.textContent = product.price;
+
+        total += parseFloat(product.price);
 
         // Info options
         if (product.options) {
@@ -379,7 +384,21 @@ document.addEventListener('DOMContentLoaded', () => {
         cartItemInfo.append(cartItemHeader, cartItemContent);
         cartItem.append(cartItemImage, cartItemInfo, cartItemSubmitButton);
         cartList.append(cartItem);
-      });
+      }); // end foreach item
+
+      const cartFooter = document.createElement('div');
+      cartFooter.classList.add('item', 'cart__footer');
+
+      const cartTotalPrice = document.createElement('p');
+      cartTotalPrice.classList.add('cart__text');
+      cartTotalPrice.textContent = `Total: ${Math.round(total * 100) / 100}`;
+
+      const cartCheckoutButton = document.createElement('button');
+      cartCheckoutButton.classList.add('button', 'button--black');
+      cartCheckoutButton.textContent = 'Checkout';
+
+      cartFooter.append(cartTotalPrice, cartCheckoutButton);
+      cartList.append(cartFooter);
     }
   }
 
