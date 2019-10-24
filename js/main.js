@@ -355,24 +355,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         total += parseFloat(product.price);
 
-        // Info options
-        if (product.options) {
-          const cartItemInfoOptions = document.createElement('div');
-          cartItemInfoOptions.classList.add('item__options');
+        // Info option(s)
+        const cartItemOptions = document.createElement('div');
+        cartItemOptions.classList.add('item__options');
 
+        if (product.options) {
           Object.values(product.options).forEach(option => {
             let attributeID = Object.keys(option.attributes).find(key => {
               return key === item[option.optionID];
             });
 
-            let optionElement = document.createElement('p');
-            optionElement.classList.add('item__option');
-            optionElement.textContent = `${option.optionName}: ${option.attributes[attributeID]}`;
-            cartItemInfoOptions.append(optionElement);
+            let cartItemOption = document.createElement('p');
+            cartItemOption.classList.add('item__option');
+            cartItemOption.textContent = option.attributes[attributeID];
+            cartItemOptions.append(cartItemOption);
           });
-
-          cartItemContent.append(cartItemInfoOptions);
+        } else {
+          let cartItemOption = document.createElement('p');
+          cartItemOption.classList.add('item__option');
+          cartItemOption.textContent = 'Plain';
+          cartItemOptions.append(cartItemOption);
         }
+
+        cartItemContent.append(cartItemOptions);
 
         const cartItemSubmitButton = document.createElement('button');
         cartItemSubmitButton.type = 'submit';

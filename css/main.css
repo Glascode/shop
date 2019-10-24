@@ -204,7 +204,7 @@ button:not(:disabled),
 
 .cart__list {
   display: none;
-  width: 25rem;
+  width: 20rem;
   max-width: 80vw;
   max-height: 70vh;
   margin: 0;
@@ -263,17 +263,31 @@ button:not(:disabled),
 }
 
 .item__name {
+  margin-top: 0.5rem;
+  margin-left: -2rem;
   margin-bottom: 0;
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
 .item__price {
   margin-bottom: 0;
 }
 
+.item__options {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .item__option {
-  margin-bottom: 0.3rem;
+  margin-bottom: 0;
+}
+.item__option:not(:last-child) {
+  margin-right: 0.5rem;
+}
+.item__option:not(:last-child)::after {
+  content: "/";
+  margin-left: 0.5rem;
 }
 
 .category:not(:first-of-type) {
