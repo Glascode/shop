@@ -15,7 +15,7 @@ The site can work totally statically. Just open the index.html file in your favo
 
 #### Items identification
 
-The identification of the items (products) is based on their `productID` only. However, since the products are organised within different categories, the `categoryID` is kept in the parsing process so this parsing is made less heavy. For instance, there is no need to parse an entire category to retrieve a product if it's not a part of it).
+The identification of the items (products) is based on their `productID` only. However, since the products are organised within different categories, the `categoryID` is kept in the parsing process so this parsing is made less heavy. For instance, there is no need to parse an entire category to retrieve a product if it's not a part of it.
 
 ### HTML
 
@@ -37,7 +37,7 @@ main.scss
 
 Only 3 separate files are connected to the `main.scss`:
 
-**`_base.scss`:** contains resets, variables and general styles.
+**`_base.scss`:** contains variables, resets and general styles.
 
 **`_layout.scss`:** contains all styles handling the layout.
 
