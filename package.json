@@ -1,0 +1,26 @@
+{
+  "name": "shop",
+  "version": "1.0.0",
+  "description": "A minimal e-commerce page, generated with Handlebars.js.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Glascode/shop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Glascode/shop/issues"
+  },
+  "homepage": "https://github.com/Glascode/shop#readme"
+}
